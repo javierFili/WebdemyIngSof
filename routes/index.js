@@ -1,16 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const conexion = require('../src/keys.js'); //la conexion es en keys
-module.exports = conexion;
-router.get('/', (req, res) => {
-    conexion.query('SELECT * FROM curso', (error,results)=>{ //funca pero dice que no es una funcion
-        if(error){
-            throw error;
-        }else{
-            res.send(results);
-        }
-    });
+const pool = require('../config/database');
+
+router.get('/', async (req, res) => {
+    const cursos = await pool.query('SELECT * FROM CURSO');
+    console.log(cursos);
+    res.redirect('index');
 });
 
 module.exports = router;
