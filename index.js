@@ -8,9 +8,6 @@ const app = express();
 //app.set('view engine','ejs');
 
 //Settings
-<<<<<<< HEAD
-app.set('port', process.env.PORT || 2000); //en lugar del list app.set
-=======
 app.set('port', process.env.PORT || 2000);
 app.engine('.hbs', exphbs({
     //defaultLayout: 'main', //página principal donde se encuentra HTML
@@ -20,7 +17,6 @@ app.engine('.hbs', exphbs({
     helpers: require('./lib/handlebars')
 }))
 app.set('view engine', '.hbs');
->>>>>>> trying
 
 //Middlewares
 app.use(morgan('dev'));
@@ -35,6 +31,6 @@ app.use(require('./routes/course')); //se usa la ruta
 //Public
 
 //Startin the server
-app.listen(app.get('port'), () => {
+app.listen(app.get('port'), () => {         //en aqui escuchamos el puerto
     console.log('Server on port', app.get('port'));
 });
