@@ -1,23 +1,66 @@
 import React, {Component} from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AppBar from './components/appBarComponents/AppBar.jsx';
+import Body from './components/body-components/Body.jsx';
+import Inicio from './components/VistaInfoCurso/Inicio.jsx'
+import NotFound from './components/NotFound.jsx';
 
-import NotFound from './pages/NotFound';
-import Vista1 from './pages/Vista1';
-import Vista2 from './pages/Vista2';
-import Inicio from './pages/Inicio';
+function VistaGeneral(){
+    return(
+      <Router>
+        <div>
+          <AppBar 
+  
+          />
+        </div>
+        <div class="fondo">
+          <Body
+            
+          />
+        </div>
+        </Router>
+    );
+  
+  }
+  
+  function VistaCurso(){
+   return(
+    <Router>
+      <div>
+        <AppBar 
+  
+        />
+      </div>
+
+      <div class="fondo">
+        <Inicio>
+        </Inicio>
+      </div>
+      </Router>
+    );
+  }  
 
 class App extends Component{
     render() {
         return( 
-            <BrowserRouter>
+            <Router>
                 <Switch>
-                    <Route exact path='/' component={Inicio}/>
-                    <Route exact path='/vista1' component={Vista1}/>
-                    <Route exact path='/vista2' component={Vista2}/>
-                    <Route component={NotFound}/>
+                    <Route exact path='/' >
+                        <VistaGeneral>
+                        </VistaGeneral>
+                    </Route>
+
+                    {/* path="/blog/:slug" */}
+                    <Route path="/Inicio/:entrada">  
+                        <VistaCurso>
+                        </VistaCurso>
+                    </Route> 
+                    <Route>
+                        <NotFound/>
+                    </Route>
                 </Switch>
-            </BrowserRouter>
+            </Router>
         )
     }
 }
