@@ -2,34 +2,42 @@ import React, { Component } from 'react';
 import Carrusel from './carrucel/Carrusel.jsx';
 
 
-const Body = () => {
+const Body =()=>{
     return (
-        <div>
-            <div class="BodyPart" >
-                <p class="descripcion">
-                    <h5 class="letraDescrip">
-                        Esta pagina esta pensada para el aprendizaje de herramientas 
+        
+        <div className="fondo">
+            <div className="BodyPart" >
+            <div className='vistaDescrip'>
+                {<h5>esto debe desaparecer</h5>}
+            </div>
+                <div className="descripcion">
+                    
+                    <h3 className="letraDescrip">
+                        <br />
+                       <p> Esta pagina esta pensada para el aprendizaje de herramientas 
                         tecnologicas y fomentar el aprendizaje en todas las personas 
                         que deseen aprender   
-                    </h5>     
-                </p>        
+                        </p>
+                    </h3>
+                        
+                </div>        
             </div>        
-                <div class="introTit">            
-                <div class="BodyPart">
-                        <p class="plataforma">
+                <div className="introTit">            
+                <div className="BodyPart">
+                        <div className="plataforma">
                         <h3>
-                        Cursos en plataforma:
+                            Cursos en plataforma:
                         </h3>
-                        </p>   
+                        </div>   
                 </div>
            </div>
-           <div class="BodyPart">
+           <div className="BodyPart">
                 <Carrusel 
  
                     />
            </div>
         </div>
-        
+       
     )
 }
 

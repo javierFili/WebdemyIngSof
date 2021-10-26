@@ -7,7 +7,7 @@ const Inicio = ()=>{
    return(
        <div>
 
-           {this.entrada}
+           {entrada}
 
        </div>
    )

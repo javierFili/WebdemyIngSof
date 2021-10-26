@@ -1,54 +1,87 @@
-/**/
-
-/* La parte del APPBAR*/
-/* #appBar{
-  height: 60px;
-  background-color: #2F5D62;
+/*Toda la parte del appBar, los colores, el titulo de la plataforma*/
+.Bt-Wdemy{
+  background-color:#2F5D62;
+  border-color: #2F5D62;
+  height: 55px;
+  border:none;
 }
-#titulo{
-  margin-block-end: 100px;
+
+.linkInial{
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.titulo{
   color: white;
 }
-.descripcion{
-  background: #DFEEEA;
-  border-radius: 50px;
-  opacity: 0.3;
-  margin:auto;
-  width:70%;
+
+.appBar{
+  height: 100px;
+  margin-top: -1%;
+  background-color: #2F5D62;
+ 
 }
 
-.letraDescrip{
-  width: 70%;
-  margin:auto;
-  text-align:center;
-  
-} */
-/* .introTit{
-  display: inline-flex;
-  margin-top: 10%;
-}
-
-
+/*La parte del body, fondo
+  carrusel,descripcion, filtro.
+*/
 .fondo {
   background-image: url(./imagenes/chicaCompu.jpeg); 
   min-height: 750px;
   max-height: 20px;
   min-width: 200px;
   max-width: 1350px;
+  margin-top: -5%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-} */
+  background-size: cover; 
+} 
 
-/*La parte de carrucel*/
-#esta {
-  display: inline-block;
-  width: 290px;
-  height: 400px;
-  border: 1px solid black;
-  margin-left: 1%;
+.vistaDescrip{
+  width: 100%;
+  height: 10%;
+  opacity: 0.0;
+}
+
+.descripcion{
+  width: 60%;
+  height: 100px;
+  margin-top: 5%;
+  background-color: #DFEEEA;
+  border-radius: 50px;
+  margin-left: 14%;
+  text-align: center;
+  opacity: 0.5  ;
+  overflow:auto;
+}
+/*La parte de carrucel , filtro*/
+.filtro{
+  margin-left: 70%;
   margin-bottom: 1%;
-  border-radius: 20px;
+}
+
+#elementosDelCarrusel {
+  display:inline-table;
+  width: 270px;
+  height: 350px;
+  border: 1px solid black;
+  margin-left: 2%;
+  margin-right: 0.1%;
+  margin-bottom: 1%;
+  border-radius: 25px;
+}
+
+.elementos-carrusel{
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  background-color:#2F5D62;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 
 .carruPrincial{
@@ -58,10 +91,12 @@
 
 .carruDere{
   margin-top: 180px;
+  margin-left: -15px;
 }
 
 .carruIzq{
   margin-top: 180px;
+  margin-left: 1%;
 }
 
 .carruMedio{
@@ -70,18 +105,11 @@
   margin-left: 3%;
   border-radius: 20px;
   height: 100%;
-  width: 97%;
+  width: 95%;
+  overflow: scroll
 }
 
-
-.elementos-carrusel{
-  width: 100%;
-  height: 100%;
-  border-radius: 6%;
-  background-color:white;
+.Bt-Flecha{
+  border:none;
+  background-color: rgba(3, 3, 3, 0);;
 }
-.Bt-Wdemy{
-  background-color:white;
-  border-color: white;
-}
-
