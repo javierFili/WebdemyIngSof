@@ -162,8 +162,8 @@ class Filtro extends Component{
  }
   render() {
     return (
-      <>     
-          <form className='filtro' onSubmit={this.handleSubmit} >
+      <div>
+        <form className='filtro' onSubmit={this.handleSubmit} >
             <label>
               Filtro de cursos:
               <input type="text"  value={this.state.value} onChange={this.handleChange} />
@@ -238,8 +238,7 @@ class Filtro extends Component{
         </div>
 
         
-        
-      </>
+      </div>
     )
   }
 
