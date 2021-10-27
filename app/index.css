@@ -1,3 +1,6 @@
+/*npm run webpack*/
+/*npm run dev*/
+
 /*Toda la parte del appBar, los colores, el titulo de la plataforma*/
 .Bt-Wdemy{
   background-color:#2F5D62;
@@ -52,14 +55,14 @@
   margin-left: 14%;
   text-align: center;
   opacity: 0.5  ;
-  overflow:auto;
+  
 }
 /*La parte de carrucel , filtro*/
 .filtro{
   margin-left: 70%;
   margin-bottom: 1%;
 }
-
+/* revisar */
 #elementosDelCarrusel {
   display:inline-table;
   width: 270px;

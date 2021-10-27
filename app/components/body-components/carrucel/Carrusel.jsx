@@ -8,33 +8,28 @@ import {
 class Filtro extends Component{
   constructor(props){
     super(props);
-    this.state = {value: ""};
+    this.state = {value: "" ,noHayElement:false};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.nombreAbuscar="";
     this.sacar=this.sacar.bind(this);
-    this.numActual=0;
-    this.numSig   =4;
+    this.numActual= 0;
+    this.numSig   = 4;
     this.flechaIqzClickada = this.flechaIqzClickada.bind(this);
     this.flechaDereClickada= this.flechaDereClickada.bind(this);
-
+ 
     this.estadoBotDere = false;
     this.estadoBotIzq  = false;
+    this.elemtVacio = false;    
 
     this.refrescarPagina = this.refrescarPagina.bind(this);
     this.numFiltrado=0;
-
-    this.elemtVacio = false;
+    this.numFiltrado2=0;
 
   }
 
   handleChange(event) {
-    if(event.key === 'enter'){
-      this.handleSubmit();
-    }else{
-      this.setState({value: event.target.value});
-    }
-    
+    this.setState({value: event.target.value});  
     event.preventDefault()
   }
 
@@ -46,7 +41,7 @@ class Filtro extends Component{
     event.preventDefault();
   }
 
-  sacar(event) {
+  sacar() {
     var filtracion= curso.filter(curso =>curso.palsClavs.includes(this.nombreAbuscar) ||
     this.nombreAbuscar === "" );
     this.numFiltrado = filtracion.length;
@@ -60,48 +55,34 @@ class Filtro extends Component{
       var filtracion2 = aRecor.slice(this.numActual,filtracion.length);
       
     }
-    if(filtracion.length===0){
-      this.elemtVacio = true;
+    
+    if(this.numActual == 0 && filtracion2.length >= 4){
+      //se muestra solo el boton de la derecha 
+      this.estadoBotDere = true;
+      this.estadoBotIzq = false;  
+      //this.setState({dere:true,izq:false});
+      console.log('el boton dere habilitado, izq bloqueado');
+      console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+      //funca
     }else{
-      this.elemtVacio = false;
-    }
-
-      if(filtracion.length > this.numSig && this.numActual >= 3){
-        //ambos botones estan activos y prendidos 
-        //ojo solo debemos mostrar 4 elementos en la pantalla
-        this.estadoBotDere = true;
-        this.estadoBotIzq = true;
-        console.log("ambos estan predidos");
+      if(filtracion.length < 4){
+        //ningun boton esta activo
+        this.estadoBotDere = false;
+        this.estadoBotIzq = false; 
+        //this.setState({dere:false,izq:false});
+        console.log('ambos botones estan bloqueados');
         console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
-      }else{
-        if(this.numActual == 0 && filtracion2.length >= 4){
-          //se muestra solo el boton de la derecha 
-          this.estadoBotDere = true;
-          this.estadoBotIzq = false;  
-          console.log('el boton dere habilitado, izq bloqueado');
-          console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
-          //funca
-        }else{
-          if(filtracion.length < 4){
-            //ningun boton esta activo
-            this.estadoBotDere = false;
-            this.estadoBotIzq = false;     
-            console.log('ambos botones estan bloqueados');
-            console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
-          }else{  
-            if(this.numSig >=1 || this.numSig === this.numFiltrado  ){
-              //este esta de cosiderar,revisar funcionalidad.
-              //es boton izquierda encendio
-              this.estadoBotIzq =true;
-              this.estadoBotDere = false;
-              console.log('el boton izq esta habilitado, la dere esta bloqueada');
-              console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
-            }else{
-              console.log("no entra a ninguna");
-            }
-          }
-        }
+      }else{  
+
       }
+    }
+    /* if(this.numFiltrado===0){
+      this.setState({noHayElement:true});
+    }else{
+      this.setState({noHayElement:false});
+    }  */
+
+    this.numFiltrado2 = filtracion2.length;
     return filtracion2;
   }
   
@@ -111,14 +92,36 @@ class Filtro extends Component{
       this.numSig = this.numActual;
       this.numActual = this.numActual-4;
     }else{
-      this.forceUpdate();
+      this.setState({izq:false});
+    }
+    if(this.numFiltrado > this.numSig && this.numActual >= 4){
+      //ambos botones estan activos y prendidos 
+      //ojo solo debemos mostrar 4 elementos en la pantalla
+      this.estadoBotDere = true;
+      this.estadoBotIzq = true;
+      //this.setState({dere:true,izq:true});
+      console.log("ambos estan predidos");
+      console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+    }else{
+      if(this.numActual == 0 && this.numFiltrado2 >= 4){
+        //se muestra solo el boton de la derecha 
+        this.estadoBotDere = true;
+        this.estadoBotIzq = false;  
+        //this.setState({dere:true,izq:false});
+        console.log('el boton dere habilitado, izq bloqueado');
+        console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+        //funca
+      }else{
+
+      }
+
     }
     this.forceUpdate();
   }
 
   flechaDereClickada(){
     if(this.numSig === this.numFiltrado){
-      //no hace nada ojo!!!  ni aparece el boton
+      //this.setState({dere:false});
       this.forceUpdate();
     }else{
       if(this.numSig+4 < this.numFiltrado){       
@@ -129,6 +132,28 @@ class Filtro extends Component{
         this.numSig =  this.numFiltrado;
     }
   }
+
+  if(this.numFiltrado > this.numSig && this.numActual >= 4){
+    //ambos botones estan activos y prendidos 
+    //ojo solo debemos mostrar 4 elementos en la pantalla
+    this.estadoBotDere = true;
+    this.estadoBotIzq = true;
+    //this.setState({dere:true,izq:true});
+    console.log("ambos estan predidos");
+    console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+  }else{
+    if(this.numSig >=4 || this.numSig === this.numFiltrado  ){
+      //este esta de cosiderar,revisar funcionalidad.
+      //es boton izquierda encendio
+      this.estadoBotIzq =true;
+      this.estadoBotDere = false;
+      //this.setState({dere:false,izq:true});
+      console.log('el boton izq esta habilitado, la dere esta bloqueada');
+      console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+    }
+  }
+
+
    this.forceUpdate();
   }
 
@@ -137,7 +162,7 @@ class Filtro extends Component{
  }
   render() {
     return (
-      <div>     
+      <>     
           <form className='filtro' onSubmit={this.handleSubmit} >
             <label>
               Filtro de cursos:
@@ -166,7 +191,7 @@ class Filtro extends Component{
             
             <div className="carruMedio">
               <ul>
-              {this.elemtVacio ? 
+              {this.numFiltrado === 0 ? 
                   <h1>Lo sentimos no hay cursos con ese nombre</h1> : null
               }
               {
@@ -195,7 +220,7 @@ class Filtro extends Component{
            </div>
 
           <div className="carruDere">
-            {this.estadoBotDere ?  <button className="Bt-Flecha" onClick={this.flechaDereClickada}>
+            {this.estadoBotDere ?  <button class="Bt-Flecha" onClick={this.flechaDereClickada}>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz
                       34AAAAAXNSR0IArs4c6QAAAbNJREFUSEudleF1wjAMhD9t1I7CBnSDjhA2gBG6Ad
                       2AbpBuQDeACdTnxImlWKJ95FeCsaQ7nU5C+Aig60n7qm/+OA4x/SqUv/7xPBNUa3l
@@ -213,7 +238,8 @@ class Filtro extends Component{
         </div>
 
         
-      </div>
+        
+      </>
     )
   }
 
