@@ -30,6 +30,7 @@ function VistaCurso(){
   const params = useParams();
 
  return(
+   
   <Router>
     <div>
       <AppBar 
@@ -37,12 +38,9 @@ function VistaCurso(){
       />
     </div>
     <div className="fondo">
-    <Inicio>
-
-    </Inicio>
+      <Inicio id_curso = {params.entrada} />
     </div>
-    
-    </Router>
+  </Router>
   );
 
 }

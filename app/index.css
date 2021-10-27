@@ -113,3 +113,9 @@
   border:none;
   background-color: rgba(3, 3, 3, 0);;
 }
+
+#imagenCurso{
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

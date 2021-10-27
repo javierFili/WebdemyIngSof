@@ -23,7 +23,7 @@ router.get('/cursoU',async (req,res)=>{
 router.get('/etiqueta', async (req,res)=>{
     //const etiq=
     const cursoEti = await pool.query('SELECT curso.nombre,curso.imagen,curso.inscritos,curso.descripcion,curso.requisitos,curso.duracion,curso.fechaCreacion FROM Etiqueta as E join CURSO Join curso_has_etiqueta  where id_curso = CURSO_id_curso and id_etiqueta=ETIQUETA_id_etiqueta and E.nombre= ?', 'python');
-    res.send(cursoEti);
+    res.send(cursoEti);0
 });
 
 router.get('/:id', async (req, res) => {
@@ -39,5 +39,31 @@ router.get('/:id', async (req, res) => {
     res.send(cursos); //muestra la consulta en la pagina
 });
 
+
+router.get('/:id/modulos', async (req, res) => {
+    const { id } = req.params;
+    const cursos = await pool.query('SELECT Modulo.nombre FROM Modulo Join CURSO WHERE id_curso = CURSO_id_curso and id_curso= ?', [id], (err,rows,fields) => {
+        if(!err){
+            res.json(rows);
+        }else{
+            console.log(err);
+        }
+    });
+    console.log(cursos);
+    res.send(cursos); //muestra la consulta en la pagina
+});
+
+router.get('/:id/etiquetas', async (req, res) => {
+    const { id } = req.params;
+    const cursos = await pool.query('SELECT E.nombre FROM Etiqueta as E Join CURSO Join curso_has_etiqueta WHERE id_curso = CURSO_id_curso and id_etiqueta=ETIQUETA_id_etiqueta and id_curso= ?', [id], (err,rows,fields) => {
+        if(!err){
+            res.json(rows);
+        }else{
+            console.log(err);
+        }
+    });
+    console.log(cursos);
+    res.send(cursos); //muestra la consulta en la pagina
+});
 
 module.exports = router;
