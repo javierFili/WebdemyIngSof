@@ -27,6 +27,8 @@ function VistaGeneral(){
 }
 
 function VistaCurso(){
+  const params = useParams();
+
  return(
   <Router>
     <div>
@@ -49,8 +51,6 @@ function App() {
   return(
     <Router>
         <Switch>
-                   
-  
             <Route exact path='/' >
               <VistaGeneral>
                 
@@ -58,11 +58,15 @@ function App() {
             </Route>
   
             {/* path="/blog/:slug" */}
-            <Route path="/Inicio/:entrada">  
+            <Route exact path="/Inicio/:entrada">  
               <VistaCurso>
                   
               </VistaCurso>
               
+            </Route>
+
+            <Route exact path="/Prueba">
+              <NotFound/>
             </Route>
 
             <Route component={NotFound} /> 
