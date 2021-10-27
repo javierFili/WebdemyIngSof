@@ -36,7 +36,7 @@ function VistaCurso(){
 
       />
     </div>
-    <div class="fondo">
+    <div className="fondo">
     <Inicio>
 
     </Inicio>
@@ -63,10 +63,6 @@ function App() {
                   
               </VistaCurso>
               
-            </Route>
-
-            <Route exact path="/Prueba">
-              <NotFound/>
             </Route>
 
             <Route component={NotFound} /> 
