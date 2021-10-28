@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Inicio extends Component{
     constructor(props){
@@ -11,7 +11,7 @@ class Inicio extends Component{
             etiquetas: [],
             ruta: ''
         }
-        this.imprimirEstado = this.imprimirEstado.bind(this);
+        this.refrescar = this.refrescar.bind(this);
     }
 
 
@@ -52,43 +52,76 @@ class Inicio extends Component{
             });
     }
 
-    imprimirEstado(){
-        console.log(this.state);
+    refrescar(params) {
+        window.location.href = window.location.href;    
     }
 
     render() {
         return(
-            
             <div>
-                <div id="presentacionCurso">
-                    <h1> {this.state.objCurso.nombre} </h1>
-                   <img id="imagenCurso" src={`${process.env.PUBLIC_URL}/assets/imagenes/${this.state.objCurso.imagen}`}></img>
+                <div className="deDebajoDeBody">
+                    <img id="imagenCurso" src={`${process.env.PUBLIC_URL}/assets/imagenes/${this.state.objCurso.imagen}`}></img>
+                    <div className="contenedor">
+                        <div>
+                            <div id="nombreCurso"> {this.state.objCurso.nombre} </div>
+                        </div>
+                        <div>
+                            <button id="btnVolver" onClick={this.refrescar}>
+                                <Link className='linkInial' to='/' >
+                                     Volver 
+                                </Link>   
+                            </button> 
+                        </div>
+                    </div>   
                 </div>
-                <div className="container-flulid">
 
+                <div className="container-flulid">
+                    <div className="contenedor">
+                        <div>
+                            <p className="tituloCursos">Descripcion del curso</p>
+                            <div className='contenidoCaja'>
+                                    {this.state.objCurso.descripcion}
+                            </div>
+
+                            <p className="tituloCursos">Requisitos</p>
+                            <div className='contenidoCaja'>
+                                    {this.state.objCurso.requisitos}
+                            </div>
+
+                            <p className="tituloCursos">Tutor del curso</p>
+                            <div className='contenidoCaja'>
+                                Informacion Tutor
+                            </div>
+                            <p className="infoCursos"> Duracion del curso: {this.state.objCurso.duracion} dias</p>
+                            <p className="infoCursos"> Actualizacion: {this.state.objCurso.fechaCreacion} </p>
+                            <div className="tituloCursos">Palabras Clave</div>
+                            <ul>
+                                {
+                                    this.state.etiquetas.map((etiqueta) => {
+                                        return(
+                                            <div className="etiqueta"> {etiqueta.nombre} </div>                 
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </div>
+                        <div>
+                            <p className="tituloCursos">Contenido del curso: </p>
+                            <div className='contenidoCurso' >
+                                <ul>
+                                    {
+                                        this.state.modulos.map((modulo) => {
+                                            return(
+                                                <div className="modulo"> {modulo.nombre} </div>                 
+                                            )
+                                            })
+                                    }
+                                </ul>
+                            </div>
+                        </div >
+                    </div>
                 </div>
-                <h1> {this.state.curso} </h1>
-                <h1> {this.state.objCurso.nombre} </h1>
-                <h1> {this.state.objCurso.descripcion} </h1>
-                <ul>
-                    {
-                        this.state.etiquetas.map((etiqueta) => {
-                            return(
-                                <h3> {etiqueta.nombre} </h3>                 
-                            )
-                            })
-                    }
-                </ul>
-                <ul>
-                    {
-                        this.state.modulos.map((modulo) => {
-                            return(
-                                <h2> {modulo.nombre} </h2>                 
-                            )
-                            })
-                    }
-                </ul>
-                <button onClick={this.imprimirEstado} >Click Me!</button>
+                
             </div>
         )
     }

@@ -22,7 +22,7 @@
   height: 100px;
   margin-top: -1%;
   background-color: #2F5D62;
- 
+  margin-bottom: 25px;
 }
 
 /*La parte del body, fondo
@@ -30,15 +30,17 @@
 */
 .fondo {
   background-image: url(./imagenes/chicaCompu.jpeg); 
-  min-height: 750px;
-  max-height: 20px;
-  min-width: 200px;
-  max-width: 1350px;
+  background-size: 100% 100%;
   margin-top: -5%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
 } 
+
+.fondoColor {
+  background-color: #DFEEEA;
+  background-attachment: fixed;
+}
 
 .vistaDescrip{
   width: 100%;
@@ -65,7 +67,7 @@
 /* revisar */
 #elementosDelCarrusel {
   display:inline-table;
-  width: 270px;
+  width: 250px;
   height: 350px;
   border: 1px solid black;
   margin-left: 2%;
@@ -118,7 +120,82 @@
 }
 
 #imagenCurso{
-  height: 150px;
+  height: 200px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0;
+}
+
+.contenedor{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+#nombreCurso{
+  font-size: 45px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.tituloCursos{
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.infoCursos{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.contenidoCaja{
+  font-size: 20px;
+  background-color: #A7C4BC; 
+  border-radius: 10px;
+  width: 500px;
+  padding: 15px;
+}
+
+#btnVolver{
+  background-color: #2F5D62;
+  font-size: 20px;
+  color: #FFFFFF;
+  position: absolute;
+  right: 0px;
+  margin-right: 50px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.etiqueta{
+  font-size: 15px;
+  background-color: #5E8B7E; 
+  color: #FFFFFF;
+  border-radius: 5px;
+  width: 85px;
+  padding: 5px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.modulo{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  background-color: #2F5D62; 
+  color: #FFFFFF;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
 }

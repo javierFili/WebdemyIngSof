@@ -13,7 +13,6 @@ export default class AppBar extends React.Component {
         this.refrescar = this.refrescar.bind(this);
     }
     refrescar(params) {
-        
         window.location.href = window.location.href;    
     }
 
@@ -23,7 +22,6 @@ export default class AppBar extends React.Component {
                 <Link className='linkInial' to='/' >
                     <h2 className='titulo'>Wdemy</h2>
                 </Link>
-                    
             </button>
         )
         return (
