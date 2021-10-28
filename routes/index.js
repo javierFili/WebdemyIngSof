@@ -14,6 +14,11 @@ router.get('/curso', async (req,res)=>{
     res.send(repetidos);
 });
 
+router.get('/cursos', async (req,res)=>{
+    const repetidos= await pool.query('SELECT Curso.id_curso, Curso.nombre as nombreCurso, Curso.imagen, Curso.inscritos, Curso.fechaCreacion, etiqueta.nombre as nombreEtiqueta  FROM Curso Join curso_has_etiqueta Join etiqueta WHERE Curso.id_curso = curso_has_etiqueta.CURSO_id_curso and curso_has_etiqueta.ETIQUETA_id_etiqueta = etiqueta.id_etiqueta ORDER BY inscritos desc,fechaCreacion desc');
+    res.send(repetidos);
+});
+
 router.get('/cursoU',async (req,res)=>{
     //const idCurso= //parte del frontend obtenerlo
     const cursoUnico = await pool.query('SELECT * FROM Modulo join CURSO where id_curso=Curso_id_curso and id_curso = ?',5113);
@@ -23,6 +28,17 @@ router.get('/cursoU',async (req,res)=>{
 router.get('/etiqueta', async (req,res)=>{
     //const etiq=
     const cursoEti = await pool.query('SELECT curso.nombre,curso.imagen,curso.inscritos,curso.descripcion,curso.requisitos,curso.duracion,curso.fechaCreacion FROM Etiqueta as E join CURSO Join curso_has_etiqueta  where id_curso = CURSO_id_curso and id_etiqueta=ETIQUETA_id_etiqueta and E.nombre= ?', 'python');
+    res.send(cursoEti);
+});
+router.get('/etiqueta/:palabra', async (req,res)=>{
+    const { palabra } = req.params;
+    const cursoEti = await pool.query('SELECT curso.nombre,curso.imagen,curso.inscritos,curso.descripcion,curso.requisitos,curso.duracion,curso.fechaCreacion FROM Etiqueta as E join CURSO Join curso_has_etiqueta  where id_curso = CURSO_id_curso and id_etiqueta=ETIQUETA_id_etiqueta and E.nombre  ?',[palabra], (err,rows,fields) => {
+        if(!err){
+            res.json(rows);
+        }else{
+            console.log(err);
+        }
+    });
     res.send(cursoEti);
 });
 

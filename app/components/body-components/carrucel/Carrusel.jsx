@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import curso from '../../../data/Pruebas';
+//import curso from '../../../data/Pruebas';
 import {
   Link
 } from "react-router-dom";
 
+var cursos = [];
 
 class Filtro extends Component{
   constructor(props){
@@ -25,9 +26,20 @@ class Filtro extends Component{
     this.refrescarPagina = this.refrescarPagina.bind(this);
     this.numFiltrado=0;
     this.numFiltrado2=0;
-
   }
 
+  componentDidMount() {
+    this.fetchCourse();
+  }
+
+  fetchCourse(){
+    fetch('/api/cursos/cursos')
+        .then(res => res.json())
+        .then(data => {
+            cursos = data;
+        });
+  }
+  
   handleChange(event) {
     this.setState({value: event.target.value});  
     event.preventDefault()
@@ -42,13 +54,17 @@ class Filtro extends Component{
   }
 
   sacar() {
-    var filtracion= curso.filter(curso =>curso.palsClavs.includes(this.nombreAbuscar) ||
+    var filtracion0= cursos.filter(curso =>curso.nombreEtiqueta.includes(this.nombreAbuscar) ||
     this.nombreAbuscar === "" );
+
+    let hash = {};
+    var filtracion = filtracion0.filter(curso=>hash[curso.id_curso]? false : hash[curso.id_curso]=true);
+
     this.numFiltrado = filtracion.length;
+
     if(filtracion.length > this.numSig){
       var aRecor = filtracion.slice();
       var filtracion2 = aRecor.slice(this.numActual,this.numSig);
-      
     }else{
       console.log('entra');
       var aRecor = filtracion.slice();
@@ -174,7 +190,7 @@ class Filtro extends Component{
 
         <div className="carruPrincial" >
           <div className="carruIzq">
-            {this.estadoBotIzq ? <button class="Bt-Flecha" onClick={this.flechaIqzClickada}>
+            {this.estadoBotIzq ? <button className="Bt-Flecha" onClick={this.flechaIqzClickada}>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz3
             4AAAAAXNSR0IArs4c6QAAAalJREFUSEuNVe11wzAIPCZoNqg3cDpBvUGzSb1BskmyQTNKNlIfMp
             aQADn6Yz99cdwdiHA4CECSXc6/mZKJ/CHwpwy9N0/qvXrCHDInm7NOAOeACcDoEoM8I+Euy18lW
@@ -199,17 +215,18 @@ class Filtro extends Component{
                 return(
                   <div id="elementosDelCarrusel" > 
                       <button className="elementos-carrusel" onClick={this.refrescarPagina}>
-                      <Link className='linkInial' to={`/Inicio/${curso.id}`}>
-                        <ul key={curso.id}>
-                            <h3>{curso.titulo}</h3>
+                      <Link className='linkInial' to={`/Inicio/${curso.id_curso}`}>
+                        <div key={curso.id_curso}>
+                            <h3>{curso.nombreCurso}</h3>
                             <br />                    
-                            {curso.imagen}
+                            <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
                             <br />
-                            {curso.actualizacion}
+                            {curso.fechaCreacion}
                             <br />
-                            {curso.tutor} 
-                            
-                          </ul>
+                            Inscritos: {curso.inscritos}
+                            <br />
+                            Tutor de curso 
+                        </div>
                       </Link>
                       </button> 
                   </div>                  

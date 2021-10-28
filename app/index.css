@@ -70,8 +70,8 @@
   width: 250px;
   height: 350px;
   border: 1px solid black;
-  margin-left: 2%;
-  margin-right: 0.1%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
   margin-bottom: 1%;
   border-radius: 25px;
 }
@@ -87,6 +87,7 @@
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+  padding: 15px;
 }
 
 .carruPrincial{
@@ -97,6 +98,8 @@
 .carruDere{
   margin-top: 180px;
   margin-left: -15px;
+  padding: 15px;
+  align-items: center;
 }
 
 .carruIzq{
@@ -111,7 +114,8 @@
   border-radius: 20px;
   height: 100%;
   width: 95%;
-  overflow: scroll
+  overflow: scroll;
+  align-items: center;
 }
 
 .Bt-Flecha{
@@ -127,6 +131,15 @@
   margin-left: auto;
   margin-right: auto;
   padding: 20px 0;
+}
+#imagenCursoRed{
+  width: 250px;
+  height: 140px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contenedor{
