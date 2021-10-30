@@ -3,19 +3,19 @@ const router = express.Router();
 const pool = require('../config/database');
 
 router.get('/', async (req, res) => {
-    const cursos = await pool.query('SELECT inscritos FROM CURSO order by inscritos desc');
+    const cursos = await pool.query('SELECT inscritos FROM curso ORDER BY inscritos DESC');
     console.log(cursos);
     //res.redirect('index'); //redirige a index pero esta vacio
     res.send(cursos); //muestra la consulta en la pagina
 });
 
 router.get('/curso', async (req,res)=>{
-    const repetidos= await pool.query('select * from curso order by inscritos desc,fechaCreacion desc');
+    const repetidos= await pool.query('SELECT * FROM curso ORDER BY inscritos DESC,fechaCreacion DESC');
     res.send(repetidos);
 });
 
 router.get('/cursos', async (req,res)=>{
-    const repetidos= await pool.query('SELECT Curso.id_curso, Curso.nombre as nombreCurso, Curso.imagen, Curso.inscritos, Curso.fechaCreacion, etiqueta.nombre as nombreEtiqueta  FROM Curso Join curso_has_etiqueta Join etiqueta WHERE Curso.id_curso = curso_has_etiqueta.CURSO_id_curso and curso_has_etiqueta.ETIQUETA_id_etiqueta = etiqueta.id_etiqueta ORDER BY inscritos desc,fechaCreacion desc');
+    const repetidos= await pool.query('SELECT curso.id_curso, curso.nombre as nombreCurso, curso.imagen, curso.inscritos, curso.fechaCreacion, etiqueta.nombre as nombreEtiqueta  FROM curso Join curso_has_etiqueta Join etiqueta WHERE curso.id_curso = curso_has_etiqueta.CURSO_id_curso and curso_has_etiqueta.ETIQUETA_id_etiqueta = etiqueta.id_etiqueta ORDER BY inscritos desc,fechaCreacion desc');
     res.send(repetidos);
 });
 

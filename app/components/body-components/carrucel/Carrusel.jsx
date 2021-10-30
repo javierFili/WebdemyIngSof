@@ -9,7 +9,10 @@ var cursos = [];
 class Filtro extends Component{
   constructor(props){
     super(props);
-    this.state = {value: "" ,noHayElement:false};
+    this.state = {
+      value: "" ,noHayElement:false
+    };
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.nombreAbuscar="";
@@ -42,15 +45,15 @@ class Filtro extends Component{
   
   handleChange(event) {
     this.setState({value: event.target.value});  
-    event.preventDefault()
+    event.preventDefault();
   }
 
   handleSubmit(event) { 
+    event.preventDefault();
+    this.forceUpdate();
     this.nombreAbuscar = this.state.value;
     this.numActual = 0;
     this.numSig = 4;
-    this.forceUpdate();
-    event.preventDefault();
   }
 
   sacar() {
@@ -179,13 +182,11 @@ class Filtro extends Component{
   render() {
     return (
       <div>
-        <form className='filtro' onSubmit={this.handleSubmit} >
-            <label>
-              Filtro de cursos:
-              <input type="text"  value={this.state.value} onChange={this.handleChange} />
+          <form className='filtro' onSubmit={this.handleSubmit} >
+              <label> Filtro de cursos:</label>
+
+              <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Filtro de cursos"/>
               <input type="submit" value="Filtrar"/>
-            </label>
-            
           </form>
 
         <div className="carruPrincial" >
