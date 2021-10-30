@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Popup from './Popup.jsx';
 //import curso from '../../../data/Pruebas';
 import {
   Link
@@ -12,12 +13,15 @@ class Filtro extends Component{
     this.state = {value: "" ,noHayElement:false};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePaste = this.handlePaste.bind(this);
     this.nombreAbuscar="";
     this.sacar=this.sacar.bind(this);
     this.numActual= 0;
+    this.showPopup= false
     this.numSig   = 4;
     this.flechaIqzClickada = this.flechaIqzClickada.bind(this);
-    this.flechaDereClickada= this.flechaDereClickada.bind(this);
+    this.flechaDereClickada = this.flechaDereClickada.bind(this);
+    this.togglePopup = this.togglePopup.bind(this);
  
     this.estadoBotDere = false;
     this.estadoBotIzq  = false;
@@ -41,8 +45,23 @@ class Filtro extends Component{
   }
   
   handleChange(event) {
+    const regexp = /[a-zA-Z]+/;
+    console.log(event.target.value.match(regexp));
     this.setState({value: event.target.value});  
     event.preventDefault()
+  }
+
+  handlePaste(event){
+    event.preventDefault();
+    this.togglePopup();
+    console.log("se intento pegar");
+    return false;
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
   handleSubmit(event) { 
@@ -182,10 +201,10 @@ class Filtro extends Component{
         <form className='filtro' onSubmit={this.handleSubmit} >
             <label>
               Filtro de cursos:
-              <input type="text"  value={this.state.value} onChange={this.handleChange} />
+              <input type="text"  value={this.state.value} onChange={this.handleChange} onPaste={this.handlePaste} maxLength={16}/>
               <input type="submit" value="Filtrar"/>
+              
             </label>
-            
           </form>
 
         <div className="carruPrincial" >
@@ -237,7 +256,7 @@ class Filtro extends Component{
            </div>
 
           <div className="carruDere">
-            {this.estadoBotDere ?  <button class="Bt-Flecha" onClick={this.flechaDereClickada}>
+            {this.estadoBotDere ?  <button className="Bt-Flecha" onClick={this.flechaDereClickada}>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz
                       34AAAAAXNSR0IArs4c6QAAAbNJREFUSEudleF1wjAMhD9t1I7CBnSDjhA2gBG6Ad
                       2AbpBuQDeACdTnxImlWKJ95FeCsaQ7nU5C+Aig60n7qm/+OA4x/SqUv/7xPBNUa3l
@@ -253,7 +272,14 @@ class Filtro extends Component{
             
           </div>
         </div>
-
+        
+        {this.state.showPopup ? 
+                <Popup
+                  text='No se permite pegar texto en el campo'
+                  closePopup={this.togglePopup.bind(this)}
+                />
+                : null
+              }
         
       </div>
     )
