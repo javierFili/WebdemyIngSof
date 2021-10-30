@@ -14,14 +14,17 @@ class Filtro extends Component{
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePaste = this.handlePaste.bind(this);
+    this.handleChar = this.handleChar.bind(this);
     this.nombreAbuscar="";
     this.sacar=this.sacar.bind(this);
     this.numActual= 0;
-    this.showPopup= false
+    this.showPopupPaste= false;
+    this.showPopupChar= false;
     this.numSig   = 4;
     this.flechaIqzClickada = this.flechaIqzClickada.bind(this);
     this.flechaDereClickada = this.flechaDereClickada.bind(this);
-    this.togglePopup = this.togglePopup.bind(this);
+    this.togglePopupPaste = this.togglePopupPaste.bind(this);
+    this.togglePopupChar = this.togglePopupChar.bind(this);
  
     this.estadoBotDere = false;
     this.estadoBotIzq  = false;
@@ -45,22 +48,48 @@ class Filtro extends Component{
   }
   
   handleChange(event) {
-    const regexp = /[a-zA-Z]+/;
-    console.log(event.target.value.match(regexp));
     this.setState({value: event.target.value});  
     event.preventDefault()
   }
 
   handlePaste(event){
     event.preventDefault();
-    this.togglePopup();
+    this.togglePopupPaste();
     console.log("se intento pegar");
     return false;
   }
 
-  togglePopup() {
+  togglePopupPaste() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopupPaste: !this.state.showPopupPaste
+    });
+  }
+
+  handleChar(e){
+    //var tecla = (document.all) ? e.keyCode : e.which;
+
+    var tecla = e.charCode;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8 || tecla == 13) {
+       return true; 
+    }else{
+      var patron = /[A-Za-z0-9]/;
+      var tecla_final = String.fromCharCode(tecla);
+      if(patron.test(tecla_final)){
+        return true;
+      }else{
+        e.preventDefault();
+        console.log("No se agrega nada");
+        this.togglePopupChar();
+        return false;
+      }  
+    }
+  }
+
+  togglePopupChar() {
+    this.setState({
+      showPopupChar: !this.state.showPopupChar
     });
   }
 
@@ -200,8 +229,8 @@ class Filtro extends Component{
       <div>
         <form className='filtro' onSubmit={this.handleSubmit} >
             <label>
-              Filtro de cursos:
-              <input type="text"  value={this.state.value} onChange={this.handleChange} onPaste={this.handlePaste} maxLength={16}/>
+              Filtro de Cursos:
+              <input type="text"  value={this.state.value} onKeyPress={this.handleChar} onChange={this.handleChange} onPaste={this.handlePaste} maxLength={16}/>
               <input type="submit" value="Filtrar"/>
               
             </label>
@@ -273,14 +302,20 @@ class Filtro extends Component{
           </div>
         </div>
         
-        {this.state.showPopup ? 
+        {this.state.showPopupPaste ? 
                 <Popup
                   text='No se permite pegar texto en el campo'
-                  closePopup={this.togglePopup.bind(this)}
+                  closePopup={this.togglePopupPaste.bind(this)}
                 />
                 : null
               }
-        
+        {this.state.showPopupChar ? 
+                <Popup
+                  text='El campo solo puede ser llenado con letras y números'
+                  closePopup={this.togglePopupChar.bind(this)}
+                />
+                : null
+              }
       </div>
     )
   }
