@@ -20,7 +20,7 @@ export default class AppBar extends React.Component {
         const Menu = props => (    
             <button className="Bt-Wdemy"  onClick={this.refrescar}>
                 <Link className='linkInial' to='/' >
-                    <h2 className='titulo'>Wdemy</h2>
+                    <h2 className='titulo'>Wdemy</h2> /*titulo que se ve en header*/
                 </Link>
             </button>
         )

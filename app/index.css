@@ -73,26 +73,30 @@
   margin-left: 0.5%;
   margin-right: 0.5%;
   margin-bottom: 1%;
-  border-radius: 25px;
+  border-radius: 15px; /*elemento contenedor*/
+  overflow: hidden;   /*esto deberia eliminar el scrollbar no funciona*/
 }
 
 .elementos-carrusel{
   width: 100%;
   height: 100%;
-  border-radius: 25px;
+  border-radius: 15px; /*elento color de relleno*/
   background-color:#2F5D62;
 	color: inherit;
 	border: none;
 	padding: 0;
 	font: inherit;
+  font-family: Arial; /*tipo de letra para curso*/
 	cursor: pointer;
 	outline: inherit;
   padding: 15px;
+  overflow: hidden; /*est aumento para ver si cambia no cambia*/
 }
 
 .carruPrincial{
   display: grid;
   grid-template-columns: 0.09% 98% 0.1%;
+  /*este es el contenedor principal?*/
 }
 
 .carruDere{
@@ -112,6 +116,7 @@
   background-color: #DFEEEA;
   margin-left: 3%;
   border-radius: 20px;
+
   height: 100%;
   width: 95%;
   overflow: scroll;
@@ -152,6 +157,7 @@
 
 #nombreCurso{
   font-size: 45px;
+  font-family: Arial;
   margin-top: 10px;
   margin-bottom: 10px;
   color: #000000;
@@ -159,6 +165,7 @@
 
 .tituloCursos{
   font-size: 30px;
+  font-family: Arial;  /*estoy cambiando el tipo de letra*/
   margin-top: 10px;
   margin-bottom: 10px;
   color: #000000;

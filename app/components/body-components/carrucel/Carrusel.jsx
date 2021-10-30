@@ -168,8 +168,6 @@ class Filtro extends Component{
       console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
     }
   }
-
-
    this.forceUpdate();
   }
 
@@ -208,7 +206,7 @@ class Filtro extends Component{
             <div className="carruMedio">
               <ul>
               {this.numFiltrado === 0 ? 
-                  <h1>Lo sentimos no hay cursos con ese nombre</h1> : null
+                  <h1 >¡Ups! No hay cursos disponibles</h1> : null   /**no hay fuente para este */
               }
               {
               this.sacar().map(curso => {
