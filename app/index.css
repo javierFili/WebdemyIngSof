@@ -117,11 +117,32 @@
   overflow: scroll;
   align-items: center;
 }
-
+/* las flechas der*/
 .Bt-Flecha{
   border:none;
-  background-color: rgba(3, 3, 3, 0);;
+  background-color: rgba(3, 3, 3, 0);
+  width: 0; 
+  height: 0; 
+  border-left: 50px solid #f0ad4e;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent; 
+
 }
+/* las flechas izq*/
+.Bt-Flecha1{
+  border:none;
+  background-color: rgba(3, 3, 3, 0);
+  border-left: -100px;
+  width: 0;
+  height: 0;
+  border-right: 50px solid cyan;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+
+}
+
+
+
 
 #imagenCurso{
   height: 200px;
