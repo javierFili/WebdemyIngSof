@@ -1,10 +1,10 @@
 {
   "name": "wdemy",
   "version": "1.0.0",
-  "description": "",
+  "description": "Utilizar Node js Version: 14.18.1     https://nodejs.org/es/",
   "main": "index.js",
   "scripts": {
-    "start": "index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "webpack": "webpack --mode development --watch"
   },

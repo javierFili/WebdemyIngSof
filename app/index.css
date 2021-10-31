@@ -1,7 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 /*npm run webpack*/
 /*npm run dev*/
 
 /*Toda la parte del appBar, los colores, el titulo de la plataforma*/
+
+
+*{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-webkit-box-sizing: border-box;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
 .Bt-Wdemy{
   background-color:#2F5D62;
   border-color: #2F5D62;
@@ -70,28 +87,34 @@
   display:inline-table;
   width: 250px;
   height: 350px;
-  border: 1px solid black;
   margin-left: 0.5%;
   margin-right: 0.5%;
   margin-bottom: 1%;
-  border-radius: 15px; /*elemento contenedor*/
-  overflow: hidden;   /*esto deberia eliminar el scrollbar no funciona*/
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  overflow: hidden;
 }
 
 .elementos-carrusel{
   width: 100%;
   height: 100%;
-  border-radius: 15px; /*elento color de relleno*/
-  background-color:#2F5D62;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-  font-family: Arial; /*tipo de letra para curso*/
-	cursor: pointer;
-	outline: inherit;
+  border-radius: 10px;
+  background-color:#148F77;
+  color: white;
+  border: solid 2px rgba(0,0,0, .2);
+  padding: 0;
+  /* font: inherit; */
+  font-size: 18px;
+  cursor: pointer;
+  /* outline: inherit; */
   padding: 15px;
-  overflow: hidden; /*est aumento para ver si cambia no cambia*/
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .carruPrincial{
@@ -125,29 +148,12 @@
   /**overflow: scroll;*/
   align-items: center;
   overflow: hidden; 
+  align-content: center;
 }
 /* las flechas der*/
 .Bt-Flecha{
   border:none;
   background-color: rgba(3, 3, 3, 0);
-  width: 0; 
-  height: 0; 
-  border-left: 30px solid #5E8B7E;
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent; 
-
-}
-/* las flechas izq*/
-.Bt-Flecha1{
-  border:none;
-  background-color: rgba(3, 3, 3, 0);
-  border-left: -100px;
-  width: 0;
-  height: 0;
-  border-right: 30px solid #5E8B7E;
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-
 }
 
 #imagenCurso{
@@ -242,39 +248,26 @@
   text-align: center;
 }
 
-.popup {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  background-color: rgba(0,0,0, 0.5);
-}
-.popup_inner {
-  position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 25%;
-  bottom: 25%;
-  height: 60px;
-  background: #A7C4BC;
-  text-align: center;
-  border-radius: 15px;
-}
 
-.textoPopup{
-  color: #000000;
-  size: 16px;
-}
 
-.btnOk{
-  background-color: #2F5D62;
-  font-size: 14px;
-  color: #FFFFFF;
-  right: 0px;
-  padding: 5px;
+
+/* Styles filtro curso*/
+/* .filtro label{} */
+.filtro input[type='text']{
+  margin: 2px;
+  padding: 5px 10px;
+  border: solid 2px transparent;
   border-radius: 5px;
+  box-shadow: 3px 3px 3px rgba(0,0,0, .2);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
+
+.filtro input[type='text']:focus{
+  border: solid 2px rgba(20, 143, 119, 1);
+  outline: none;
+}
+
+/* .filtro input[type='submit']{} */
