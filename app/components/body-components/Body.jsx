@@ -3,6 +3,9 @@ import Carrusel from './carrucel/Carrusel.jsx';
 
 
 const Body =()=>{
+    
+
+
     return (
         
         <div className="fondo">

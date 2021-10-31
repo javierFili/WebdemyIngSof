@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-
 import {
   Link
 } from "react-router-dom";
@@ -8,6 +6,7 @@ import {
 var cursos = [];
 
 class Filtro extends Component{
+  
   constructor(props){
     super(props);
     this.state = {value: "" ,noHayElement:false};
@@ -25,12 +24,19 @@ class Filtro extends Component{
     this.elemtVacio = false;    
 
     this.refrescarPagina = this.refrescarPagina.bind(this);
-    this.numFiltrado=0;
+    this.numFiltrado=1;
     this.numFiltrado2=0;
+    
+    //this.componentDidMount=this.componentDidMount.bind(this);
+    //this.fetchCourse = this.fetchCourse.bind(this);
+    
+
   }
 
-  componentDidMount() {
+  
+  componentDidMount(){
     this.fetchCourse();
+    console.log('entra1')
   }
 
   fetchCourse(){
@@ -39,6 +45,8 @@ class Filtro extends Component{
         .then(data => {
             cursos = data;
         });
+        console.log('entra2')
+    /* this.forceUpdate(); */
   }
   
   handleChange(event) {
@@ -55,6 +63,7 @@ class Filtro extends Component{
   }
 
   sacar() {
+    
     var filtracion0= cursos.filter(curso =>curso.nombreEtiqueta.includes(this.nombreAbuscar) ||
     this.nombreAbuscar === "" );
 
@@ -67,7 +76,7 @@ class Filtro extends Component{
       var aRecor = filtracion.slice();
       var filtracion2 = aRecor.slice(this.numActual,this.numSig);
     }else{
-      console.log('entra');
+      /* console.log('entra'); */
       var aRecor = filtracion.slice();
       var filtracion2 = aRecor.slice(this.numActual,filtracion.length);
       
@@ -77,8 +86,8 @@ class Filtro extends Component{
       this.estadoBotDere = false;
       this.estadoBotIzq = false; 
       //this.setState({dere:false,izq:false});
-      console.log('ambos botones estan bloqueados');
-      console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+      /* console.log('ambos botones estan bloqueados');
+      console.log(this.estadoBotDere+"  "+this.estadoBotIzq); */
     }else{
     
     if(this.numActual == 0 && this.numFiltrado > 4){
@@ -86,8 +95,8 @@ class Filtro extends Component{
       this.estadoBotDere = true;
       this.estadoBotIzq = false;  
       //this.setState({dere:true,izq:false});
-      console.log('el boton dere habilitado, izq bloqueado entra!');
-      console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+      /* console.log('el boton dere habilitado, izq bloqueado entra!');
+      console.log(this.estadoBotDere+"  "+this.estadoBotIzq); */
       //funca
     }else{
         
@@ -109,9 +118,9 @@ class Filtro extends Component{
     if(this.numActual > 0 ){
       this.numSig = this.numActual;
       this.numActual = this.numActual-4;
-      console.log('esta al numActual')
+      /* console.log('esta al numActual') */
     }else{
-      console.log('qie aras aqui111')
+      /* console.log('qie aras aqui111') */
     }
 
     if(this.numFiltrado > this.numSig && this.numActual >= 4){
@@ -120,8 +129,8 @@ class Filtro extends Component{
       this.estadoBotDere = true;
       this.estadoBotIzq = true;
       //this.setState({dere:true,izq:true});
-      console.log("ambos estan predidos");
-      console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+      /* console.log("ambos estan predidos");
+      console.log(this.estadoBotDere+"  "+this.estadoBotIzq); */
     }else{
       
         this.estadoBotDere = true;
@@ -150,8 +159,8 @@ class Filtro extends Component{
     this.estadoBotDere = true;
     this.estadoBotIzq = true;
     //this.setState({dere:true,izq:true});
-    console.log("ambos estan predidos");
-    console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+    /* console.log("ambos estan predidos");
+    console.log(this.estadoBotDere+"  "+this.estadoBotIzq); */
   }else{
     if(this.numSig >=4 || this.numSig === this.numFiltrado  ){
       //este esta de cosiderar,revisar funcionalidad.
@@ -159,8 +168,8 @@ class Filtro extends Component{
       this.estadoBotIzq =true;
       this.estadoBotDere = false;
       //this.setState({dere:false,izq:true});
-      console.log('el boton izq esta habilitado, la dere esta bloqueada');
-      console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+      /* console.log('el boton izq esta habilitado, la dere esta bloqueada');
+      console.log(this.estadoBotDere+"  "+this.estadoBotIzq); */
     }
   }
 
@@ -193,8 +202,9 @@ class Filtro extends Component{
               <ul>
               {this.numFiltrado === 0 ? 
 
-                  <h1> <br /> <br /> <br /> <br />   ¡Ups! No hay cursos disponibles</h1> : null
+                  <h1 > <br /> <br /> <br /> <br />   ¡Ups! No hay cursos disponibles</h1> : null
               }
+             {/*  {this.fetchCourse()} */}
               {
               this.sacar().map(curso => {
                 return(
