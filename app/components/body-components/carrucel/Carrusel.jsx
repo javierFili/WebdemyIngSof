@@ -72,24 +72,25 @@ class Filtro extends Component{
       var filtracion2 = aRecor.slice(this.numActual,filtracion.length);
       
     }
+    if(filtracion.length <= 4){
+      //ningun boton esta activo
+      this.estadoBotDere = false;
+      this.estadoBotIzq = false; 
+      //this.setState({dere:false,izq:false});
+      console.log('ambos botones estan bloqueados');
+      console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
+    }else{
     
-    if(this.numActual == 0 && filtracion2.length >= 4){
+    if(this.numActual == 0 && this.numFiltrado > 4){
       //se muestra solo el boton de la derecha 
       this.estadoBotDere = true;
       this.estadoBotIzq = false;  
       //this.setState({dere:true,izq:false});
-      console.log('el boton dere habilitado, izq bloqueado');
+      console.log('el boton dere habilitado, izq bloqueado entra!');
       console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
       //funca
     }else{
-      if(filtracion.length < 4){
-        //ningun boton esta activo
-        this.estadoBotDere = false;
-        this.estadoBotIzq = false; 
-        //this.setState({dere:false,izq:false});
-        console.log('ambos botones estan bloqueados');
-        console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
-      }else{  
+        
 
       }
     }
@@ -108,9 +109,11 @@ class Filtro extends Component{
     if(this.numActual > 0 ){
       this.numSig = this.numActual;
       this.numActual = this.numActual-4;
+      console.log('esta al numActual')
     }else{
-      this.setState({izq:false});
+      console.log('qie aras aqui111')
     }
+
     if(this.numFiltrado > this.numSig && this.numActual >= 4){
       //ambos botones estan activos y prendidos 
       //ojo solo debemos mostrar 4 elementos en la pantalla
@@ -120,18 +123,9 @@ class Filtro extends Component{
       console.log("ambos estan predidos");
       console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
     }else{
-      if(this.numActual == 0 && this.numFiltrado2 >= 4){
-        //se muestra solo el boton de la derecha 
+      
         this.estadoBotDere = true;
         this.estadoBotIzq = false;  
-        //this.setState({dere:true,izq:false});
-        console.log('el boton dere habilitado, izq bloqueado');
-        console.log(this.estadoBotDere+"  "+this.estadoBotIzq);
-        //funca
-      }else{
-
-      }
-
     }
     this.forceUpdate();
   }
@@ -170,7 +164,6 @@ class Filtro extends Component{
     }
   }
 
-
    this.forceUpdate();
   }
 
@@ -183,8 +176,8 @@ class Filtro extends Component{
         <form className='filtro' onSubmit={this.handleSubmit} >
             <label>
               Filtro de cursos:
-              <input type="text"  value={this.state.value} onChange={this.handleChange} />
-              <input type="submit" value="Filtrar"/>
+              <input   type="text"  value={this.state.value} onChange={this.handleChange } />
+              {/* <input type="submit" value="Filtrar"/> */}
             </label>
             
           </form>
@@ -192,7 +185,6 @@ class Filtro extends Component{
         <div className="carruPrincial" >
           <div className="carruIzq">
             {this.estadoBotIzq ? <button className="Bt-Flecha1" onClick={this.flechaIqzClickada}>
-            
             </button> :null}
             
             </div>
