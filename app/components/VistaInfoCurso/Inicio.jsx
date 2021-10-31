@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+
 
 class Inicio extends Component{
     constructor(props){
@@ -52,7 +53,8 @@ class Inicio extends Component{
             });
     }
 
-    refrescar(params) {
+    refrescar() {
+        this.props.history.push("/");
         window.location.href = window.location.href;    
     }
 
@@ -67,9 +69,7 @@ class Inicio extends Component{
                         </div>
                         <div>
                             <button id="btnVolver" onClick={this.refrescar}>
-                                <Link className='linkInial' to='/' >
-                                     Volver 
-                                </Link>   
+                                Volver
                             </button> 
                         </div>
                     </div>   
@@ -127,6 +127,6 @@ class Inicio extends Component{
     }
 }
 
-export default Inicio;
+export default withRouter(Inicio);
 
 

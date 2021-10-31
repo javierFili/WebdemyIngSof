@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 
 import {
     BrowserRouter as Router,
-   
+    withRouter,
     Link
   } from "react-router-dom";
 
-export default class AppBar extends React.Component {
+class AppBar extends Component {
 
     constructor(props){
         super(props);
         this.refrescar = this.refrescar.bind(this);
     }
     refrescar(params) {
-        window.location.href = window.location.href;    
+        this.props.history.push("/");
+        window.location.href = window.location.href;
     }
 
     render(){ 
         const Menu = props => (    
-            <button className="Bt-Wdemy"  onClick={this.refrescar}>
-                <Link className='linkInial' to='/' >
-                    <h2 className='titulo'>Wdemy</h2> /*titulo que se ve en header*/
+            <button className="Bt-Wdemy" >
+                <Link className='linkInial' to='/' onClick={this.refrescar}>
+                    <h2 className='titulo'>Wdemy</h2>
                 </Link>
             </button>
         )
@@ -32,3 +33,4 @@ export default class AppBar extends React.Component {
     }          
 }
 
+export default withRouter(AppBar);
