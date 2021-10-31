@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import {
   Link
 } from "react-router-dom";
-
-var cursos = [];
-
-class Filtro extends Component{
-  
+let cursos = [];
+class Filtro  extends Component {
   constructor(props){
     super(props);
     this.state = {value: "" ,noHayElement:false};
@@ -26,17 +23,14 @@ class Filtro extends Component{
     this.refrescarPagina = this.refrescarPagina.bind(this);
     this.numFiltrado=1;
     this.numFiltrado2=0;
-    
-    //this.componentDidMount=this.componentDidMount.bind(this);
-    //this.fetchCourse = this.fetchCourse.bind(this);
-    
 
   }
 
   
   componentDidMount(){
     this.fetchCourse();
-    console.log('entra1')
+    console.log('entra1');
+    console.log(this.cad);
   }
 
   fetchCourse(){
@@ -203,8 +197,7 @@ class Filtro extends Component{
               {this.numFiltrado === 0 ? 
 
                   <h1 > <br /> <br /> <br /> <br />   ¡Ups! No hay cursos disponibles</h1> : null
-              }
-             {/*  {this.fetchCourse()} */}
+              }             
               {
               this.sacar().map(curso => {
                 return(
@@ -247,10 +240,10 @@ class Filtro extends Component{
 
 //export default class Carrusel extends Component {
 function Carrusel(params) {
+  
   return (
         <main role="main">
-          <Filtro 
-          />
+          <Filtro />
          
         </main>
         
