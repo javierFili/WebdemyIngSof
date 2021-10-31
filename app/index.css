@@ -96,7 +96,7 @@
 .carruPrincial{
   display: grid;
   grid-template-columns: 0.09% 98% 0.1%;
-  /*este es el contenedor principal?*/
+  overflow: hidden; /*este es el contenedor principal?*/
 }
 
 .carruDere{
