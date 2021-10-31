@@ -102,14 +102,16 @@
 
 .carruDere{
   margin-top: 180px;
-  margin-left: -15px;
+  margin-left: -40px;
   padding: 15px;
   align-items: center;
 }
 
 .carruIzq{
   margin-top: 180px;
-  margin-left: 1%;
+  
+  align-items: center;
+  
 }
 
 .carruMedio{
@@ -124,10 +126,28 @@
   align-items: center;
   overflow: hidden; 
 }
-
+/* las flechas der*/
 .Bt-Flecha{
   border:none;
-  background-color: rgba(3, 3, 3, 0);;
+  background-color: rgba(3, 3, 3, 0);
+  width: 0; 
+  height: 0; 
+  border-left: 30px solid #5E8B7E;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent; 
+
+}
+/* las flechas izq*/
+.Bt-Flecha1{
+  border:none;
+  background-color: rgba(3, 3, 3, 0);
+  border-left: -100px;
+  width: 0;
+  height: 0;
+  border-right: 30px solid #5E8B7E;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+
 }
 
 #imagenCurso{
