@@ -58,12 +58,13 @@
   margin-left: 14%;
   text-align: center;
   opacity: 0.5  ;
-  
+  font-family: Arial, Helvetica, sans-serif;
 }
 /*La parte de carrucel , filtro*/
 .filtro{
   margin-left: 70%;
   margin-bottom: 1%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 /* revisar */
 #elementosDelCarrusel {
@@ -178,6 +179,12 @@
   grid-gap: 10px;
   margin-left: 60px;
   margin-right: 60px;
+}
+
+.plataforma{
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  size: 20px;
 }
 
 #nombreCurso{
