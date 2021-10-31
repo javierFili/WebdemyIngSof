@@ -84,7 +84,8 @@ body{
 }
 /* revisar */
 #elementosDelCarrusel {
-  display:inline-table;
+  display: inline-table;
+  justify-content: center;
   width: 250px;
   height: 350px;
   margin-left: 0.5%;
@@ -99,6 +100,7 @@ body{
 }
 
 .elementos-carrusel{
+  justify-content: center;
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -154,6 +156,25 @@ body{
 .Bt-Flecha{
   border:none;
   background-color: rgba(3, 3, 3, 0);
+  width: 0; 
+  height: 0; 
+  border-left: 30px solid #5E8B7E;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent; 
+  
+
+}
+/* las flechas izq*/
+.Bt-Flecha1{
+  border:none;
+  background-color: rgba(3, 3, 3, 0);
+  border-left: -100px;
+  width: 0;
+  height: 0;
+  border-right: 30px solid #5E8B7E;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+
 }
 
 #imagenCurso{
