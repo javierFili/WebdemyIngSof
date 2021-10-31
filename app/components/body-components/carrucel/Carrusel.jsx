@@ -192,7 +192,8 @@ class Filtro extends Component{
             <div className="carruMedio">
               <ul>
               {this.numFiltrado === 0 ? 
-                  <h1>Lo sentimos no hay cursos con ese nombre</h1> : null
+
+                  <h1> <br /> <br /> <br /> <br />   ¡Ups! No hay cursos disponibles</h1> : null
               }
               {
               this.sacar().map(curso => {
