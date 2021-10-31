@@ -53,7 +53,7 @@ class Filtro  extends Component {
   
   handleChange(event) {
     this.setState({value: event.target.value});  
-    event.preventDefault()
+    event.preventDefault();
   }
 
   handlePaste(event){
@@ -98,11 +98,11 @@ class Filtro  extends Component {
   }
 
   handleSubmit(event) { 
+    event.preventDefault();
+    this.forceUpdate();
     this.nombreAbuscar = this.state.value;
     this.numActual = 0;
     this.numSig = 4;
-    this.forceUpdate();
-    event.preventDefault();
   }
 
   cortar(obj){
