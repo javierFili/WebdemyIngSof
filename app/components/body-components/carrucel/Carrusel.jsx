@@ -104,7 +104,6 @@ class Filtro extends Component{
 
   cortar(obj){
     let text = JSON.stringify(obj);
-    console.log(text);
     return text.slice(1,11);
   }
 
