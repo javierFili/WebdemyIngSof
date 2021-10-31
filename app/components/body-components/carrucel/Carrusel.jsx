@@ -17,6 +17,7 @@ class Filtro extends Component{
     this.handleChar = this.handleChar.bind(this);
     this.nombreAbuscar="";
     this.sacar=this.sacar.bind(this);
+    this.cortar=this.cortar.bind(this);
     this.numActual= 0;
     this.showPopupPaste= false;
     this.showPopupChar= false;
@@ -99,6 +100,12 @@ class Filtro extends Component{
     this.numSig = 4;
     this.forceUpdate();
     event.preventDefault();
+  }
+
+  cortar(obj){
+    let text = JSON.stringify(obj);
+    console.log(text);
+    return text.slice(1,11);
   }
 
   sacar() {
@@ -269,9 +276,9 @@ class Filtro extends Component{
                             <br />                    
                             <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
                             <br />
-                            {curso.fechaCreacion}
+                            Actualizacion: {this.cortar(curso.fechaCreacion) }
                             <br />
-                            Inscritos: {curso.inscritos}
+                            Inscritos: { curso.inscritos }
                             <br />
                             Tutor de curso 
                         </div>
