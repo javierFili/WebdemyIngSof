@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {
   Link
 } from "react-router-dom";
-let cursos = [];
+/* let cursos = []; */
 class Filtro  extends Component {
   constructor(props){
     super(props);
-    this.state = {value: "" ,noHayElement:false};
+    this.state = {value: "" ,noHayElement:false,cursos:[]};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.nombreAbuscar="";
@@ -21,8 +21,8 @@ class Filtro  extends Component {
     this.elemtVacio = false;    
 
     this.refrescarPagina = this.refrescarPagina.bind(this);
-    this.numFiltrado=1;
-    this.numFiltrado2=0;
+    this.numFiltrado  = 0;
+    this.numFiltrado2 = 0;
 
   }
 
@@ -30,14 +30,13 @@ class Filtro  extends Component {
   componentDidMount(){
     this.fetchCourse();
     console.log('entra1');
-    console.log(this.cad);
   }
 
   fetchCourse(){
     fetch('/api/cursos/cursos')
         .then(res => res.json())
         .then(data => {
-            cursos = data;
+            this.setState({cursos:data});
         });
         console.log('entra2')
     /* this.forceUpdate(); */
@@ -58,7 +57,7 @@ class Filtro  extends Component {
 
   sacar() {
     
-    var filtracion0= cursos.filter(curso =>curso.nombreEtiqueta.includes(this.nombreAbuscar) ||
+    var filtracion0= this.state.cursos.filter(curso =>curso.nombreEtiqueta.includes(this.nombreAbuscar) ||
     this.nombreAbuscar === "" );
 
     let hash = {};
@@ -194,10 +193,7 @@ class Filtro  extends Component {
             
             <div className="carruMedio">
               <ul>
-              {this.numFiltrado === 0 ? 
-
-                  <h1 > <br /> <br /> <br /> <br />   ¡Ups! No hay cursos disponibles</h1> : null
-              }             
+                         
               {
               this.sacar().map(curso => {
                 return(
@@ -222,6 +218,10 @@ class Filtro  extends Component {
                 })
               }
               </ul>
+              {this.numFiltrado === 0 ? 
+
+                <h1 > <br /> <br /> <br /> <br />   ¡Ups! No hay cursos disponibles</h1> : null
+              }  
            </div>
 
           <div className="carruDere">
