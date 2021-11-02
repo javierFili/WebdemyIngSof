@@ -182,7 +182,10 @@ body{
 }
 
 #imagenCurso{  /*dentro del curso*/
-  height: 200px;
+  height: 450px;
+  width: 100%; /*ocupa el 100 de ancho pero no reduce altura*/
+  
+  overflow:hidden;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: block;
