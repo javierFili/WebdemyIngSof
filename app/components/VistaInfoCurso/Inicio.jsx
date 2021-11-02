@@ -60,7 +60,7 @@ class Inicio extends Component{
 
     render() {
         return(
-            <div>
+            <div > 
                 <div className="deDebajoDeBody">
                     <img id="imagenCurso" src={`${process.env.PUBLIC_URL}/assets/imagenes/${this.state.objCurso.imagen}`}></img>
                     <div className="contenedor">

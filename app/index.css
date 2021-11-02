@@ -180,7 +180,9 @@ body{
   border-bottom: 30px solid transparent;
   
 }
-
+.fondoCurso{
+  background-color:#DFEEEA;
+}
 #imagenCurso{  /*dentro del curso*/
   height: 450px;
   width: 100%; /*ocupa el 100 de ancho pero no reduce altura*/
