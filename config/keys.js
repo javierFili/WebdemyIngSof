@@ -4,8 +4,8 @@ module.exports = {
         host: 'localhost',
         port: '3306',
         user: 'root',
-        password: '',
-        database: 'practicadb'
+        password: '85201674$Garra',
+        database: 'wdemy'
     }
 
 }; 
