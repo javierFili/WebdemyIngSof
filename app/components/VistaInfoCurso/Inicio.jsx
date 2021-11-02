@@ -9,9 +9,10 @@ class Inicio extends Component{
             curso: props.id_curso,
             objCurso: {},
             modulos: [],
-            etiquetas: [],
-            ruta: ''
+            fecha: "",
+            etiquetas: []
         }
+        this.cortarFecha = this.cortarFecha.bind(this);
         this.refrescar = this.refrescar.bind(this);
     }
 
@@ -28,7 +29,7 @@ class Inicio extends Component{
             .then(data => {
                 this.setState({
                   objCurso: data,
-                  ruta: `../../imagenes/${data.imagen}`
+                  fecha: data.created_at
                 });
             });
     }
@@ -51,6 +52,11 @@ class Inicio extends Component{
                   etiquetas: data
                 });
             });
+    }
+
+    cortarFecha(obj){
+        var text = JSON.stringify(obj);
+        return text.slice(1,11);
     }
 
     refrescar() {
@@ -92,8 +98,11 @@ class Inicio extends Component{
                             <div className='contenidoCaja'>
                                 {this.state.objCurso.bibliografia}
                             </div>
-                            <p className="infoCursos"> Duracion del curso: {this.state.objCurso.duracion} dias</p>
-                            <p className="infoCursos"> Actualizacion: {this.state.objCurso.created_at} </p>
+                            <div className="infoCursos">
+                                Duracion del curso: {this.state.objCurso.duracion} dias
+                                <br/>
+                                Actualizacion: {this.cortarFecha(this.state.fecha) }
+                            </div>
                             <div className="tituloCursos">Palabras Clave</div>
                             <ul>
                                 {
