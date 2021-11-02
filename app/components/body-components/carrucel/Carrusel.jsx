@@ -8,7 +8,7 @@ import {
 class Filtro  extends Component {
   constructor(props){
     super(props);
-    this.state = {value: "" ,noHayElement:false,cursos:[]};
+    this.state = {value: "" ,noHayElement:false,cursos:[], textPopup: ""};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePaste = this.handlePaste.bind(this);
@@ -17,13 +17,11 @@ class Filtro  extends Component {
     this.sacar=this.sacar.bind(this);
     this.cortar=this.cortar.bind(this);
     this.numActual= 0;
-    this.showPopupPaste= false;
-    this.showPopupChar= false;
+    this.showPopup= false;
     this.numSig   = 4;
     this.flechaIqzClickada = this.flechaIqzClickada.bind(this);
     this.flechaDereClickada = this.flechaDereClickada.bind(this);
-    this.togglePopupPaste = this.togglePopupPaste.bind(this);
-    this.togglePopupChar = this.togglePopupChar.bind(this);
+    this.togglePopup = this.togglePopup.bind(this);
  
     this.estadoBotDere = false;
     this.estadoBotIzq  = false;
@@ -58,14 +56,15 @@ class Filtro  extends Component {
 
   handlePaste(event){
     event.preventDefault();
-    this.togglePopupPaste();
+    this.setState({textPopup: "No se permite pegar texto en el campo"})
+    this.togglePopup();
     console.log("se intento pegar");
     return false;
   }
 
-  togglePopupPaste() {
+  togglePopup() {
     this.setState({
-      showPopupPaste: !this.state.showPopupPaste
+      showPopup: !this.state.showPopup
     });
   }
 
@@ -75,6 +74,10 @@ class Filtro  extends Component {
     var tecla = e.charCode;
 
     //Tecla de retroceso para borrar, siempre la permite
+    if(this.state.showPopup){
+      e.preventDefault();
+      return false;
+    }
     if (tecla == 8 || tecla == 13) {
        return true; 
     }else{
@@ -85,16 +88,12 @@ class Filtro  extends Component {
       }else{
         e.preventDefault();
         console.log("No se agrega nada");
-        this.togglePopupChar();
+        //this.togglePopupChar();
+        this.setState({textPopup: "El campo solo puede ser llenado con letras y números"})
+        this.togglePopup();
         return false;
       }  
     }
-  }
-
-  togglePopupChar() {
-    this.setState({
-      showPopupChar: !this.state.showPopupChar
-    });
   }
 
   handleSubmit(event) { 
@@ -284,17 +283,10 @@ class Filtro  extends Component {
           </div>
         </div>
         
-        {this.state.showPopupPaste ? 
+        {this.state.showPopup ? 
                 <Popup
-                  text='No se permite pegar texto en el campo'
-                  closePopup={this.togglePopupPaste.bind(this)}
-                />
-                : null
-              }
-        {this.state.showPopupChar ? 
-                <Popup
-                  text='El campo solo puede ser llenado con letras y números'
-                  closePopup={this.togglePopupChar.bind(this)}
+                  text= {this.state.textPopup}
+                  closePopup={this.togglePopup.bind(this)}
                 />
                 : null
               }
