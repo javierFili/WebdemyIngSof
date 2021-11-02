@@ -91,7 +91,7 @@ body{
   justify-content: center;
   width: 250px;
   height: 350px;
-  margin-left: 0.5%;
+  margin-left: 0.5%; /*espacio entre componentes*/
   margin-right: 0.5%;
   margin-bottom: 1%;
   border-radius: 15px;
@@ -116,7 +116,7 @@ body{
   font-size: 18px;
   cursor: pointer;
   /* outline: inherit; */
-  padding: 15px;
+  padding: 10px 0;  /*esto hace que la imagen ocupe todo el ancho*/
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -181,7 +181,7 @@ body{
   
 }
 
-#imagenCurso{
+#imagenCurso{  /*dentro del curso*/
   height: 200px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -190,18 +190,19 @@ body{
   margin-right: auto;
   padding: 20px 0;
 }
-#imagenCursoRed{
+#imagenCursoRed{ /*dentro del contedor*/
   width: 250px;
   height: 140px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 0;
+  /*padding: 10% 0;*/
 }
 
-.contenedor{
-  display: grid;
+.contenedor{ /*nose para que es esto*/
+  display: grid; /*usado como cuadricula*/
   grid-template-columns: auto auto;
   grid-gap: 10px;
   margin-left: 60px;
