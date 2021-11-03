@@ -35,7 +35,7 @@ function VistaCurso(){
     <div>
       <AppBar/>
     </div>
-    <div className="fondo">
+    <div className="fondoCurso">
       <Inicio id_curso = {params.entrada} />
     </div>
   </Router>
