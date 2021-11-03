@@ -16,7 +16,7 @@ router.get('/curso', async (req,res)=>{
 });
 
 router.get('/cursos', async (req,res)=>{
-    const repetidos= await pool.query('SELECT curso.id_curso, curso.nombre as nombreCurso, curso.imagen, curso.inscritos, curso.fechaCreacion, etiqueta.nombre as nombreEtiqueta  FROM curso Join curso_has_etiqueta Join etiqueta WHERE curso.id_curso = curso_has_etiqueta.CURSO_id_curso and curso_has_etiqueta.ETIQUETA_id_etiqueta = etiqueta.id_etiqueta ORDER BY inscritos desc,fechaCreacion desc');
+    const repetidos= await pool.query('SELECT curso.id_curso, curso.nombre as nombreCurso, curso.imagen, curso.inscritos, curso.created_at, etiqueta.nombre as nombreEtiqueta, usuario.nombres as nomT, usuario.apellidos as apellT FROM curso, curso_has_etiqueta, etiqueta, tutor, usuario WHERE curso.id_curso = curso_has_etiqueta.CURSO_id_curso and curso_has_etiqueta.ETIQUETA_id_etiqueta = etiqueta.id_etiqueta and curso.TUTOR_id_tutor = tutor.id_tutor and usuario.id_usuario = tutor.USUARIO_id_usuario ORDER BY inscritos desc,created_at desc');
     res.send(repetidos);
 });
 
@@ -45,7 +45,7 @@ router.get('/etiqueta/:palabra', async (req,res)=>{
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-    const cursos = await pool.query('SELECT * FROM curso WHERE id_curso = ?', [id], (err,rows,fields) => {
+    const cursos = await pool.query('SELECT curso.nombre , curso.imagen, curso.inscritos, curso.descripcion, curso.requisitos, curso.duracion, curso.created_at, tutor.bibliografia FROM curso, tutor WHERE curso.TUTOR_id_tutor=tutor.id_tutor and curso.id_curso = ?', [id], (err,rows,fields) => {
         if(!err){
             res.json(rows[0]);
         }else{

@@ -90,10 +90,10 @@ class Inicio extends Component{
 
                             <p className="tituloCursos">Tutor del curso</p>
                             <div className='contenidoCaja'>
-                                Informacion Tutor
+                                {this.state.objCurso.bibliografia}
                             </div>
                             <p className="infoCursos"> Duracion del curso: {this.state.objCurso.duracion} dias</p>
-                            <p className="infoCursos"> Actualizacion: {this.state.objCurso.fechaCreacion} </p>
+                            <p className="infoCursos"> Actualizacion: {this.state.objCurso.created_at} </p>
                             <div className="tituloCursos">Palabras Clave</div>
                             <ul>
                                 {

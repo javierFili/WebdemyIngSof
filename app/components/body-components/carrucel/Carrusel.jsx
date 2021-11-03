@@ -229,11 +229,12 @@ class Filtro  extends Component {
   render() {
     return (
       <div>
-          <form className='filtro' onSubmit={this.handleSubmit} >
-              <label> Filtro de cursos:</label>
-
-              <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Filtro de cursos"/>
-              <input type="submit" value="Filtrar"/>
+        <form className='filtro' onSubmit={this.handleSubmit} >
+            <label>
+              Filtro de cursos:
+              <input   type="text"  value={this.state.value} onChange={this.handleChange} onPaste={this.handlePaste} onKeyPress={this.handleChar}/>
+              {/* <input type="submit" value="Filtrar"/> */}
+            </label>
           </form>
 
         <div className="carruPrincial" >
@@ -257,11 +258,11 @@ class Filtro  extends Component {
                             <br />                    
                             <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
                             <br />
-                            Actualizacion: {this.cortar(curso.fechaCreacion) }
+                            Actualizacion: {this.cortar(curso.created_at) }
                             <br />
                             Inscritos: { curso.inscritos }
                             <br />
-                            Tutor de curso 
+                            Tutor: {curso.nomT} {curso.apellT}
                         </div>
                       </Link>
                       </button> 
@@ -277,7 +278,7 @@ class Filtro  extends Component {
            </div>
 
           <div className="carruDere">
-            {this.estadoBotDere ?  <button class="Bt-Flecha" onClick={this.flechaDereClickada}>            
+            {this.estadoBotDere ?  <button className="Bt-Flecha" onClick={this.flechaDereClickada}>            
             </button> : null}
             
           </div>
