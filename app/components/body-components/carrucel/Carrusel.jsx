@@ -230,7 +230,7 @@ class Filtro  extends Component {
       <div>
         <form className='filtro' onSubmit={this.handleSubmit} >
             <label>
-              Filtro de cursos:
+              Filtro de Cursos:
               <input   type="text"  value={this.state.value} onChange={this.handleChange} onPaste={this.handlePaste} onKeyPress={this.handleChar} maxLength={16}/>
               {/* <input type="submit" value="Filtrar"/> */}
             </label>
