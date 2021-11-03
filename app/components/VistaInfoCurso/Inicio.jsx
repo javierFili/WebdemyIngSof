@@ -10,6 +10,7 @@ class Inicio extends Component{
             objCurso: {},
             modulos: [],
             fecha: "",
+            nombreTut: "",
             etiquetas: []
         }
         this.cortarFecha = this.cortarFecha.bind(this);
@@ -29,7 +30,8 @@ class Inicio extends Component{
             .then(data => {
                 this.setState({
                   objCurso: data,
-                  fecha: data.created_at
+                  fecha: data.created_at,
+                  nombreTut: data.nombres + " " + data.apellidos
                 });
             });
     }
@@ -56,6 +58,7 @@ class Inicio extends Component{
 
     cortarFecha(obj){
         var text = JSON.stringify(obj);
+        text = text.replace(/-/g,"/");
         return text.slice(1,11);
     }
 
@@ -96,6 +99,8 @@ class Inicio extends Component{
 
                             <p className="tituloCursos">Tutor del curso</p>
                             <div className='contenidoCaja'>
+                                {this.state.nombreTut}
+                                <br/>
                                 {this.state.objCurso.bibliografia}
                             </div>
                             <div className="infoCursos">
@@ -104,15 +109,17 @@ class Inicio extends Component{
                                 Actualizacion: {this.cortarFecha(this.state.fecha) }
                             </div>
                             <div className="tituloCursos">Palabras Clave</div>
-                            <ul>
-                                {
-                                    this.state.etiquetas.map((etiqueta) => {
-                                        return(
-                                            <div className="etiqueta"> {etiqueta.nombre} </div>                 
-                                        )
-                                    })
-                                }
-                            </ul>
+                            <div className="contEtiquetas">
+                                <ul>
+                                    {
+                                        this.state.etiquetas.map((etiqueta) => {
+                                            return(
+                                                <div className="etiqueta"> {etiqueta.nombre} </div>                 
+                                            )
+                                        })
+                                    }
+                                </ul>
+                            </div>
                         </div>
                         <div>
                             <p className="tituloCursos">Contenido del curso: </p>
@@ -130,8 +137,8 @@ class Inicio extends Component{
                         </div >
                     </div>
                 </div>
-                
             </div>
+        
         )
     }
 }

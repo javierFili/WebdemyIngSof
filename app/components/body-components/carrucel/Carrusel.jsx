@@ -4,11 +4,12 @@ import React, { Component } from 'react';
 import Popup from './Popup.jsx';
 //import curso from '../../../../public/';
 import {
-  Link
+  Link, withRouter
 } from "react-router-dom";
 
 /* let cursos = []; */
-class Filtro  extends Component {
+
+class Filtro extends Component {
   constructor(props){
     super(props);
     this.state = {value: "" ,noHayElement:false,cursos:[], textPopup: ""};
@@ -226,14 +227,15 @@ class Filtro  extends Component {
   }
 
  refrescarPagina(){
-  window.location.href = window.location.href;
+    window.location.href = window.location.href;
  }
+
   render() {
     return (
       <div>
         <form className='filtro' onSubmit={this.handleSubmit} >
             <label>
-              Filtro de cursos:
+              Filtro de Cursos:
               <input   type="text"  value={this.state.value} onChange={this.handleChange} onPaste={this.handlePaste} onKeyPress={this.handleChar} maxLength={16}/>
               {/* <input type="submit" value="Filtrar"/> */}
             </label>
@@ -253,8 +255,8 @@ class Filtro  extends Component {
               this.sacar().map(curso => {
                 return(
                   <div id="elementosDelCarrusel" >
-                    <Link className='linkInial' to={`/Inicio/${curso.id_curso}`}> 
                       <button className="elementos-carrusel" onClick={this.refrescarPagina}>
+                      <Link className='linkInial' to={`/Inicio/${curso.id_curso}`}> 
                         <div key={curso.id_curso}>
                             <h3>{curso.nombreCurso}</h3>                  
                             <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
@@ -266,10 +268,8 @@ class Filtro  extends Component {
                               Tutor: {curso.nomT} {curso.apellT}
                             </div>
                         </div>
-                      
+                        </Link>
                         </button> 
-
-                      </Link>
                   </div>                  
                   )
                 })
@@ -287,7 +287,6 @@ class Filtro  extends Component {
             
           </div>
         </div>
-        
         {this.state.showPopup ? 
                 <Popup
                   text= {this.state.textPopup}
@@ -296,6 +295,7 @@ class Filtro  extends Component {
                 : null
               }
       </div>
+      
     )
   }
 
