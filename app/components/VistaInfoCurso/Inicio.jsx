@@ -109,15 +109,17 @@ class Inicio extends Component{
                                 Actualizacion: {this.cortarFecha(this.state.fecha) }
                             </div>
                             <div className="tituloCursos">Palabras Clave</div>
-                            <ul>
-                                {
-                                    this.state.etiquetas.map((etiqueta) => {
-                                        return(
-                                            <div className="etiqueta"> {etiqueta.nombre} </div>                 
-                                        )
-                                    })
-                                }
-                            </ul>
+                            <div className="contEtiquetas">
+                                <ul>
+                                    {
+                                        this.state.etiquetas.map((etiqueta) => {
+                                            return(
+                                                <div className="etiqueta"> {etiqueta.nombre} </div>                 
+                                            )
+                                        })
+                                    }
+                                </ul>
+                            </div>
                         </div>
                         <div>
                             <p className="tituloCursos">Contenido del curso: </p>
@@ -135,8 +137,8 @@ class Inicio extends Component{
                         </div >
                     </div>
                 </div>
-                
             </div>
+        
         )
     }
 }
