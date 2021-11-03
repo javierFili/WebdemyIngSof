@@ -2,10 +2,11 @@
 
 import React, { Component } from 'react';
 import Popup from './Popup.jsx';
-//import curso from '../../../data/Pruebas';
+//import curso from '../../../../public/';
 import {
   Link
 } from "react-router-dom";
+
 /* let cursos = []; */
 class Filtro  extends Component {
   constructor(props){
@@ -251,9 +252,9 @@ class Filtro  extends Component {
               {
               this.sacar().map(curso => {
                 return(
-                  <div id="elementosDelCarrusel" > 
+                  <div id="elementosDelCarrusel" >
+                    <Link className='linkInial' to={`/Inicio/${curso.id_curso}`}> 
                       <button className="elementos-carrusel" onClick={this.refrescarPagina}>
-                      <Link className='linkInial' to={`/Inicio/${curso.id_curso}`}>
                         <div key={curso.id_curso}>
                             <h3>{curso.nombreCurso}</h3>                  
                             <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
@@ -265,8 +266,10 @@ class Filtro  extends Component {
                               Tutor: {curso.nomT} {curso.apellT}
                             </div>
                         </div>
+                      
+                        </button> 
+
                       </Link>
-                      </button> 
                   </div>                  
                   )
                 })
@@ -274,7 +277,7 @@ class Filtro  extends Component {
               </ul>
               {this.numFiltrado === 0 ? 
 
-                <h1 > <br /> <br /> <br /> <br />   ¡Ups! No hay cursos disponibles</h1> : null
+                <h1 > <img src='../../../../public/imagenDeNoEncontrado.png' alt="imagen" />  ¡Ups! No hay cursos disponibles</h1> : null
               }  
            </div>
 
