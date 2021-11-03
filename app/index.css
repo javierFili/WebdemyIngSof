@@ -230,6 +230,13 @@ body{
   /*padding: 10% 0;*/
 }
 
+#contenedorNoEnc{
+  align-items: center;
+  align-content: center;
+  margin:auto;
+  text-align:center;
+  vertical-align: middle;
+}
 .contenedor{ /*nose para que es esto*/
   display: grid; /*usado como cuadricula*/
   grid-template-columns: auto auto;

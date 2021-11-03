@@ -276,8 +276,9 @@ class Filtro extends Component {
               }
               </ul>
               {this.numFiltrado === 0 ? 
-
-                <h1 > <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/imagenDeNoEncontrado.jpeg`}></img>  ¡Ups! No hay cursos disponibles</h1> : null
+                <div id="contenedorNoEnc">
+                    <h1 > <img src={`${process.env.PUBLIC_URL}/assets/imagenes/imagenDeNoEncontrado.png`}></img>  ¡Ups! No hay cursos disponibles</h1>
+                </div> : null
               }  
            </div>
 
