@@ -83,7 +83,7 @@ class Filtro  extends Component {
     if (tecla == 8 || tecla == 13) {
        return true; 
     }else{
-      var patron = /[A-Za-z0-9]/;
+      var patron = /[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]/;
       var tecla_final = String.fromCharCode(tecla);
       if(patron.test(tecla_final)){
         return true;

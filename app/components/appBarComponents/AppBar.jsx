@@ -21,7 +21,7 @@ class AppBar extends Component {
         const Menu = props => (    
             <button className="Bt-Wdemy" >
                 <Link className='linkInial' to='/' onClick={this.refrescar}>
-                    <h2 className='titulo'>Wdemy</h2>
+                    <h2 className='titulo' >Wdemy</h2>
                 </Link>
             </button>
         )
