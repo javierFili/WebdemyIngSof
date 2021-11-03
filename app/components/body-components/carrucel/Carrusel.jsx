@@ -255,15 +255,15 @@ class Filtro  extends Component {
                       <button className="elementos-carrusel" onClick={this.refrescarPagina}>
                       <Link className='linkInial' to={`/Inicio/${curso.id_curso}`}>
                         <div key={curso.id_curso}>
-                            <h3>{curso.nombreCurso}</h3>
-                            <br />                    
+                            <h3>{curso.nombreCurso}</h3>                  
                             <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
-                            <br />
-                            Actualizacion: {this.cortar(curso.created_at) }
-                            <br />
-                            Inscritos: { curso.inscritos }
-                            <br />
-                            Tutor: {curso.nomT} {curso.apellT}
+                            <div className="curseDescription">
+                              Actualizacion: {this.cortar(curso.created_at) }
+                              <br />
+                              Inscritos: { curso.inscritos }
+                              <br />
+                              Tutor: {curso.nomT} {curso.apellT}
+                            </div>
                         </div>
                       </Link>
                       </button> 

@@ -18,7 +18,7 @@ const Body =()=>{
                     <h3 className="letraDescrip">
                         <br />
                        <p> Esta pagina esta pensada para el aprendizaje de herramientas 
-                        tecnologicas y fomentar el aprendizaje en todas las personas 
+                        tecnológicas y fomentar el aprendizaje en todas las personas 
                         que deseen aprender   
                         </p>
                     </h3>
