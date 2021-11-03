@@ -7,13 +7,13 @@ Utilizar Express:
 Verificar que los modulos estan correctamente agregando al proyecto segun el "package.json"
 En caso de errores por falta de modulos probar instalando las dependencias que se encuentran en este
 archivo.
-    npm install <nombre-dependecia> --save
+    npm install <nombre-dependecia> 
 
 En todo caso instalar nodemon para correr los scripts.
     npm i nodemon
 
 Para la base de datos debe ejecutar el codigo SQL, que se encuentra en la carpeta /database/db.sql
-Esta trae la estructura de la BD y algunos ejemplos.
+Esta trae la estructura de la BD y algunos ejemplos (ACTUALIZADA).
 
     https://expressjs.com/es/guide/database-integration.html#mysql 
 
