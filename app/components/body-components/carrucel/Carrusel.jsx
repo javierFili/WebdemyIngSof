@@ -76,7 +76,7 @@ class Filtro extends Component {
     //var tecla = (document.all) ? e.keyCode : e.which;
 
     var tecla = e.charCode;
-
+    console.log(tecla);
     //Tecla de retroceso para borrar, siempre la permite
     if(this.state.showPopup){
       e.preventDefault();
@@ -84,9 +84,14 @@ class Filtro extends Component {
     }
     if (tecla == 8 || tecla == 13) {
        return true; 
+    }
+    if (tecla == 32){ //Borra espacios
+      e.preventDefault();
+      return false;
     }else{
       var patron = /[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s]/;
       var tecla_final = String.fromCharCode(tecla);
+      
       if(patron.test(tecla_final)){
         return true;
       }else{

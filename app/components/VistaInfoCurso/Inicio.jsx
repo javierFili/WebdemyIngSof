@@ -69,7 +69,7 @@ class Inicio extends Component{
 
     render() {
         return(
-            <div > 
+            <div className="fondoCurso"> 
                 <div className="deDebajoDeBody">
                     <img id="imagenCurso" src={`${process.env.PUBLIC_URL}/assets/imagenes/${this.state.objCurso.imagen}`}></img>
                     <div className="contenedor">
@@ -110,7 +110,7 @@ class Inicio extends Component{
                             </div>
                             <div className="tituloCursos">Palabras Clave</div>
                             <div className="contEtiquetas">
-                                <ul>
+                                <div>
                                     {
                                         this.state.etiquetas.map((etiqueta) => {
                                             return(
@@ -118,7 +118,7 @@ class Inicio extends Component{
                                             )
                                         })
                                     }
-                                </ul>
+                                </div>
                             </div>
                         </div>
                         <div>
