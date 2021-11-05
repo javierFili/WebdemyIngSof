@@ -238,6 +238,7 @@ class Filtro extends Component {
   render() {
     return (
       <div>
+        
         <form className='filtro' onSubmit={this.handleSubmit} >
             <label>
               Filtro de Cursos:

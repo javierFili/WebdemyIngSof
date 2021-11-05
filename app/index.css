@@ -88,10 +88,16 @@ body{
 .letraDescrip{
   top: 20px;
 }
+#tituloCursPlat{
+  color: #000000;
+  font-size: 26px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 /*La parte de carrucel , filtro*/
 .filtro{
   margin-left: 70%;
   margin-bottom: 1%;
+  font-size: 22px;
   font-family: Arial, Helvetica, sans-serif;
 }
 /* revisar */

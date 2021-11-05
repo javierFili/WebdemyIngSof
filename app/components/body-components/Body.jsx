@@ -26,12 +26,10 @@ const Body =()=>{
                 </div>        
             </div>        
                 <div className="introTit">            
-                <div className="BodyPart">
+                <div className="BodyPart">  
                         <div className="plataforma">
-                        <h3>
-                            Cursos en plataforma:
-                        </h3>
-                        </div>   
+                            <p id="tituloCursPlat">Cursos en plataforma:</p>
+                        </div> 
                 </div>
            </div>
            <div className="BodyPart">
