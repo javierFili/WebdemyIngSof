@@ -92,6 +92,7 @@ body{
   color: #000000;
   font-size: 26px;
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 /*La parte de carrucel , filtro*/
 .filtro{
@@ -223,14 +224,19 @@ body{
   padding: 0;
 }
 #imagenCurso{  /*dentro del curso*/
-  height: 400px;
-  width: 100%; /*ocupa el 100 de ancho pero no reduce altura*/
+   /*ocupa el 100 de ancho pero no reduce altura*/
+   height: 450px;
+   width: 100%;
+   object-fit: cover;  /*soluciona todo*/
+  background-size: cover;
   overflow:hidden;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
+  background-repeat: no-repeat;
+  display: flex;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0%;
 }
+
 #imagenCursoRed{ /*dentro del contedor*/
   width: 250px;
   height: 140px;
@@ -273,6 +279,8 @@ body{
   margin-top: 10px;
   margin-bottom: 10px;
   color: white;
+  position: absolute;
+  top:45%;
 }
 
 .tituloCursos{
@@ -281,6 +289,7 @@ body{
   margin-top: 10px;
   margin-bottom: 10px;
   color: #000000;
+  
 }
 
 .contEtiquetas{
@@ -315,6 +324,8 @@ body{
   margin-right: 50px;
   padding: 5px;
   border-radius: 10px;
+  position: absolute;
+  top:45%;
 }
 
 .etiqueta{
