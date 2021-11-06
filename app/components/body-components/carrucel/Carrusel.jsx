@@ -70,13 +70,6 @@ class Filtro  extends Component {
 
   handleChar(e){
     var tecla = e.charCode;
-    if(e.fromCharCode != typeof undefined){
-      e.preventDefault();
-      console.log("No se agrega nada");
-      this.setState({textPopup: "El campo solo puede ser llenado con letras y números"})
-      this.togglePopup();
-      return false;
-    }
     //Tecla de retroceso para borrar, siempre la permite
     if(this.state.showPopup){
       e.preventDefault();
@@ -90,6 +83,14 @@ class Filtro  extends Component {
       if(patron.test(tecla_final)){
         return true;
       }else{
+
+        if(e.fromCharCode != typeof undefined){
+          e.preventDefault();
+          console.log("No se agrega nada");
+          this.setState({textPopup: "El campo solo puede ser llenado con letras y números"})
+          this.togglePopup();
+          return false;
+        }
         e.preventDefault();
         console.log("No se agrega nada");
         //this.togglePopupChar();
