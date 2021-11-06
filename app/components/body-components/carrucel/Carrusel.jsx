@@ -39,7 +39,6 @@ class Filtro  extends Component {
   
   componentDidMount(){
     this.fetchCourse();
-    console.log('entra1');
   }
 
   fetchCourse(){
@@ -48,8 +47,6 @@ class Filtro  extends Component {
         .then(data => {
             this.setState({cursos:data});
         });
-        console.log('entra2')
-    /* this.forceUpdate(); */
   }
   
   handleChange(event) {
@@ -72,10 +69,14 @@ class Filtro  extends Component {
   }
 
   handleChar(e){
-    //var tecla = (document.all) ? e.keyCode : e.which;
-
     var tecla = e.charCode;
-
+    if(e.fromCharCode != typeof undefined){
+      e.preventDefault();
+      console.log("No se agrega nada");
+      this.setState({textPopup: "El campo solo puede ser llenado con letras y números"})
+      this.togglePopup();
+      return false;
+    }
     //Tecla de retroceso para borrar, siempre la permite
     if(this.state.showPopup){
       e.preventDefault();
