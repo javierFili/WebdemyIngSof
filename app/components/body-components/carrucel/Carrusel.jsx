@@ -256,14 +256,13 @@ class Filtro extends Component {
             
             <div className="carruMedio">
               <ul>
-                         
               {
               this.sacar().map(curso => {
                 return(
                   <div id="elementosDelCarrusel" >
-                      <button className="elementos-carrusel" onClick={this.refrescarPagina}>
-                      <Link className='linkInial' to={`/Inicio/${curso.id_curso}`}> 
-                        <div key={curso.id_curso}>
+                    <button className="elementos-carrusel" onClick={this.refrescarPagina}>
+                    <Link className='linkInial' to={`/Inicio/${curso.id_curso}`} > 
+                        <div key={curso.id_curso} className="linkCurso">
                             <h3>{curso.nombreCurso}</h3>                  
                             <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
                             <div className="curseDescription">
@@ -274,8 +273,8 @@ class Filtro extends Component {
                               Tutor: {curso.nomT} {curso.apellT}
                             </div>
                         </div>
-                        </Link>
-                        </button> 
+                        </Link> 
+                        </button>
                   </div>                  
                   )
                 })
@@ -322,4 +321,4 @@ function Carrusel(params) {
     );
   
 }
-export default Carrusel;
+export default withRouter(Carrusel);
