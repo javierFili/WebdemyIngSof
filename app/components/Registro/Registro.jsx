@@ -17,32 +17,41 @@ class Registro extends Component{
                 <title>Document</title>
             </head>
             <body>
-                <form action="/action_page.php" className="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+                <form id='form' action="/action_page.php" className="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
                 <h2 className="w3-center">Contact Us</h2>
+                
                 <div className="w3-row w3-section">
-                    <div className="w3-col"  > <i className = "w3-xxlarge fa fa-user"></i></div>                            
+                    {/* <div className="w3-col"  > <i className = "w3-xxlarge fa fa-user"></i></div>                             */}
                     <div className="w3-rest">
-                    <input className="w3-input w3-border" name="first" type="text" placeholder="First Name" />
+                    <input id='prinPar' className="w3-input w3-border" name="first" type="text" placeholder="Nombre(s)" />
+                    <input id='prinPar' class="w3-input w3-border" name="last" type="text" placeholder="Apellidos" />
+                    
                     
                     </div> 
-
+                
                     <div class="w3-row w3-section">
-                        <div class="w3-col" ><i class="w3-xxlarge fa fa-user"></i></div>
+                    {/* <div class="w3-col" ><i class="w3-xxlarge fa fa-envelope-o"></i></div> */}
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" name="last" type="text" placeholder="Last Name" />
-
+                        <input id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="@gmail.com" />
                         </div>
                     </div>
 
                     <div class="w3-row w3-section">
-                    <div class="w3-col" ><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                    {/* <div class="w3-col" ><i class="w3-xxlarge fa fa-envelope-o"></i></div> */}
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" name="email" type="text" placeholder="Email" />
+                        <input id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="contraseña" />
+                        </div>
+                    </div>
+
+                    <div class="w3-row w3-section">
+                    {/* <div class="w3-col" ><i class="w3-xxlarge fa fa-envelope-o"></i></div> */}
+                        <div class="w3-rest">
+                        <input id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="confirmar contraseña" />
                         </div>
                     </div>
 
                 </div>
-                
+                <button id='botonRegis' class="w3-button " >Registrase</button>
                 </form>
                 </body>
             </html>
