@@ -1,10 +1,42 @@
 import React, { Component } from 'react';
-
+import 'w3-css/w3.css';
 import {
     BrowserRouter as Router,
     withRouter,
     Link
   } from "react-router-dom";
+
+function openPagRegister(){
+
+}
+
+function openPagLogin(){
+    
+}
+
+
+const RegisterButton = () =>{
+ 
+    return (
+        <div>
+            <button class="w3-button w3-black" onClick={openPagRegister()}>
+                Registrarse
+            </button>
+        </div>
+    );
+}
+
+
+const LoginButton = () =>{
+    return (
+        <div>
+            <button class="w3-button w3-black" onClick={openPagLogin()}>
+                iniciar sesion
+            </button>
+        </div>
+    );
+    
+}
 
 class AppBar extends Component {
 
@@ -24,10 +56,22 @@ class AppBar extends Component {
                     <h2 className='titulo' >Wdemy</h2>
                 </Link>
             </button>
+            
         )
         return (
-            <div className="appBar">
-                <Menu />
+            <div>
+                <div className="appBar">
+                    <div className="appBarIzq">
+                        <Menu />
+                    </div>
+                    <div className="appBarDere">
+                    <RegisterButton />
+
+                    <LoginButton />
+                    </div>
+                    
+                </div>
+               
             </div>
         )
     }          
