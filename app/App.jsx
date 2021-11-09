@@ -4,6 +4,8 @@ import AppBar from './components/appBarComponents/AppBar.jsx';
 import Body from './components/body-components/Body.jsx';
 import Inicio from './components/VistaInfoCurso/Inicio.jsx';
 import NotFound from './components/NotFound.jsx';
+import Registro from './components/Registro/Registro.jsx';
+import InicioDeSesion from './components/InicioDeSesion/InicioDeSesion.jsx';
 
 import { useParams } from 'react-router';
   import {
@@ -57,6 +59,19 @@ function App() {
               
             </Route>
 
+            <Route exact path="/register" >
+              <Registro>
+
+              </Registro>
+            </Route>
+
+          {/* esta de modificarPara que revisa, us y contra */}
+            <Route exact path="/login">
+              <InicioDeSesion>
+
+              </InicioDeSesion>
+            </Route>
+
             <Route component={NotFound} /> 
 
         </Switch>
@@ -64,12 +79,6 @@ function App() {
   );
   
 }
-
- /* const Inicio = ()=>{
-    const {entrada} = useParams();
-    
-      return <span>ID: {entrada}</span>;
-} */
 
 
 export default App;

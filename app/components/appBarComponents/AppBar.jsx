@@ -6,49 +6,31 @@ import {
     Link
   } from "react-router-dom";
 
-function openPagRegister(){
-
-}
-
-function openPagLogin(){
-    
-}
-
-
-const RegisterButton = () =>{
- 
-    return (
-        <div>
-            <button class="w3-button w3-black" onClick={openPagRegister()}>
-                Registrarse
-            </button>
-        </div>
-    );
-}
-
-
-const LoginButton = () =>{
-    return (
-        <div>
-            <button class="w3-button w3-black" onClick={openPagLogin()}>
-                iniciar sesion
-            </button>
-        </div>
-    );
-    
-}
 
 class AppBar extends Component {
 
     constructor(props){
         super(props);
         this.refrescar = this.refrescar.bind(this);
+        this.openPagLogin=this.openPagLogin.bind(this);
+        this.openPagRegister=this.openPagRegister.bind(this);
     }
     refrescar(params) {
         this.props.history.push("/");
         window.location.href = window.location.href;
     }
 
+    openPagRegister(){
+        this.props.history.push("/register");
+        window.location.href = window.location.href;           
+    }
+   
+    openPagLogin(){
+        this.props.history.push("/login");
+        window.location.href = window.location.href;
+    } 
+
+    
     render(){ 
         const Menu = props => (    
             <button className="Bt-Wdemy" >
@@ -65,9 +47,14 @@ class AppBar extends Component {
                         <Menu />
                     </div>
                     <div className="appBarDere">
-                    <RegisterButton />
 
-                    <LoginButton />
+                        <button class="w3-button w3-black" onClick={this.openPagRegister}>
+                            Registrarse
+                        </button>
+
+                        <button class="w3-button w3-black" onClick={this.openPagLogin}>
+                             iniciar sesion
+                        </button>
                     </div>
                     
                 </div>
