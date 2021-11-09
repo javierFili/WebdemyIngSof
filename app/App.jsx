@@ -7,6 +7,7 @@ import NotFound from './components/NotFound.jsx';
 import Registro from './components/Registro/Registro.jsx';
 import InicioDeSesion from './components/InicioDeSesion/InicioDeSesion.jsx';
 
+
 import { useParams } from 'react-router';
   import {
     BrowserRouter as Router,
@@ -31,8 +32,7 @@ function VistaGeneral(){
 function VistaCurso(){
   const params = useParams();
 
- return(
-   
+ return(   
   <Router>
       <AppBar/>
       <Inicio id_curso = {params.entrada} />
@@ -40,6 +40,20 @@ function VistaCurso(){
   );
 
 }
+
+function VistaRegistro(){
+  return(
+    <Router>
+      
+        <AppBar showButtRegis='false' showButtLogin='false' />
+        <Registro>
+
+      </Registro>
+    </Router>
+  );
+}
+
+
 
 function App() {
   return(
@@ -60,15 +74,17 @@ function App() {
             </Route>
 
             <Route exact path="/register" >
-              <Registro>
+             <VistaRegistro>
 
-              </Registro>
+             </VistaRegistro>
             </Route>
 
           {/* esta de modificarPara que revisa, us y contra */}
             <Route exact path="/login">
               <InicioDeSesion>
+                <AppBar>
 
+                </AppBar>
               </InicioDeSesion>
             </Route>
 
