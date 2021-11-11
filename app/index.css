@@ -54,6 +54,14 @@ body{
   margin-bottom: 25px;
 }
 
+/* estan correctamente acomadados.*/
+.appBarDere{
+  margin-top: 2%;
+  margin-left: 90%;
+  display: inline-block;
+}
+
+
 /*La parte del body, fondo
   carrusel,descripcion, filtro.
 */
