@@ -43,16 +43,27 @@ function VistaCurso(){
 
 function VistaRegistro(){
   return(
-    <Router>
-      
+    <Router>      
         <AppBar showButtRegis='false' showButtLogin='false' />
         <Registro>
-
       </Registro>
     </Router>
   );
 }
 
+function VistaLogin(){
+  return(
+    <Router>      
+        <AppBar showButtRegis='false' showButtLogin='false' />
+
+        <InicioDeSesion>
+
+        </InicioDeSesion>
+        
+    </Router>
+  );
+
+}
 
 
 function App() {
@@ -81,11 +92,9 @@ function App() {
 
           {/* esta de modificarPara que revisa, us y contra */}
             <Route exact path="/login">
-              <InicioDeSesion>
-                <AppBar>
+              
+              <VistaLogin/>
 
-                </AppBar>
-              </InicioDeSesion>
             </Route>
 
             <Route component={NotFound} /> 

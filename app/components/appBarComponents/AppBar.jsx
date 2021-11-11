@@ -55,11 +55,10 @@ class AppBar extends Component {
                         <Menu />
                     </div>
                     <div className="appBarDere">
-                        { this.showButtonRegister? null :
+                       { this.showButtonRegister? null :
                         <button className="w3-button w3-black" onClick={this.openPagRegister}>
                             Registrarse
-                        </button>
-                        
+                        </button>                        
                         }
                         {this.showButtonLogin? null:
                         <button className="w3-button w3-black" onClick={this.openPagLogin}>
