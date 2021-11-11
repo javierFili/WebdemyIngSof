@@ -5,6 +5,11 @@ class Registro extends Component{
     constructor(props){
         super(props);
         
+        /**MESAJES DE ERROR QUE ESTARAN DEBAJO DE ALGUN CAMPO DONDE SE HALLA COMETIDO EL ERROR */
+
+        /** */
+
+
     }
     
     render(){
@@ -17,41 +22,52 @@ class Registro extends Component{
                 <title>Document</title>
             </head>
             <body>
-                <form id='form' action="/action_page.php" className="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
-                <h2 className="w3-center">Contact Us</h2>
-                
+                <form id='form' action="/action_page.php" className="w3-container w3-card-4 w3-light-grey w3-text-blue">
+                <h2 id='TituloPrin' className="w3-center">Registrate en Wdemy</h2>
                 <div className="w3-row w3-section">
-                    {/* <div className="w3-col"  > <i className = "w3-xxlarge fa fa-user"></i></div>                             */}
-                    <div className="w3-rest">
-                    <input id='prinPar' className="w3-input w3-border" name="first" type="text" placeholder="Nombre(s)" />
-                    <input id='prinPar' class="w3-input w3-border" name="last" type="text" placeholder="Apellidos" />
                     
+                    <div id='campNomApe' className="w3-rest">
+                        <i id='logNomApe' class="w3-xxlarge fa fa-envelope-o"></i>
+
+                        <input id='campNombre' className="w3-input w3-border" name="first" type="text" placeholder="Nombre(s)"/>
+
+                        <input id='campApelli' class="w3-input w3-border" name="fisrt" type="text" placeholder="Apellidos" />
                     
                     </div> 
                 
-                    <div class="w3-row w3-section">
-                    {/* <div class="w3-col" ><i class="w3-xxlarge fa fa-envelope-o"></i></div> */}
+                    <div id='campCorr' class="w3-row w3-section">
+
+                        <i id='logoCorreo' class="w3-xxlarge fa fa-envelope-o"></i>
+
                         <div class="w3-rest">
-                        <input id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="@gmail.com" />
+
+                        <input id='campoCorreo'  class="w3-input w3-border" name="email" type="text" placeholder="@gmail.com" />
+
                         </div>
                     </div>
 
-                    <div class="w3-row w3-section">
-                    {/* <div class="w3-col" ><i class="w3-xxlarge fa fa-envelope-o"></i></div> */}
-                        <div class="w3-rest">
-                        <input id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="contraseña" />
-                        </div>
-                    </div>
+                    <div id='campContrasenias' >
+                        <i id='logoContras' class="w3-xxlarge fa fa-envelope-o"></i>  
 
-                    <div class="w3-row w3-section">
-                    {/* <div class="w3-col" ><i class="w3-xxlarge fa fa-envelope-o"></i></div> */}
-                        <div class="w3-rest">
-                        <input id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="confirmar contraseña" />
-                        </div>
+                        <input id='campContras'  class="w3-input w3-border" name="password" type="password" placeholder="contraseña" />
+
+                        <input id='campConfContr'  class="w3-input w3-border" name="password" type="password" placeholder="confirmar contraseña" />
+
                     </div>
+                    
+                </div>
+                <div>
+                    <button id='botonRegis' class="w3-button " >Registrase</button>
+                </div>
+
+                <div class='enlaceLogin'>
+                    <p>
+                        ya tienes cuenta
+                    </p>
+                    <a href="/login">iniciar sesion</a>
 
                 </div>
-                <button id='botonRegis' class="w3-button " >Registrase</button>
+
                 </form>
                 </body>
             </html>

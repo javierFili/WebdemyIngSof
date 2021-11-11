@@ -1,24 +1,107 @@
-.w3-col{
-    width: 10px;
-    height: 10px;
+#TituloPrin{
+    margin-top: 5%;
+    color: black;
+    
 }
 
-#prinPar{
-    width: 200px;
+#logNomApe{
+    width: 10%;
+    float: left;
+    padding: 15px;
 }
+#campNombre{
+    width: 45%;
+    height: 10px;
+    float: left;
+    padding: 15px;
+}
+
+#campApelli{
+    width: 45%;
+    height: 10px;
+    float: left;
+    padding: 15px;
+
+}
+
+#campNomApe{
+    margin-top: 4%;
+}
+
+#campCorr{
+    margin-top: 50px;
+}
+
+#campoCorreo{
+    width: 90%;
+    height: 10px;
+    float: left;
+    padding: 15px;   
+}
+
+#logoCorreo{
+    width: 10%;
+    height: 10px;
+    float: left;
+    padding: 15px;  
+}
+
+#campContrasenias{
+    margin-top: 50px;
+}
+
+#logoContras{
+    width: 10%;
+    float: left;
+    padding: 15px;
+
+}
+
+#campContras{
+    width: 45%;
+    height: 10px;
+    float: left;
+    padding: 15px;
+
+}
+
+#campConfContr{
+    width: 45%;
+    height: 10px;
+    float: left;
+    padding: 15px;
+
+}
+
+/*a revisar*/
+
 
 #botonRegis{
-    width: 110px;
-    
+    width: 110px; 
     top: 703px;
     background: rgba(94, 139, 126, 0.65);
-    border: 2px solid #000000;
+    border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 10px;
-    color: black;
+    margin-left: 40%;
+    
 }
 
-#form{
-    width: 60%;
-    height: 50%;
+#enlaceLogin{
+    
 }
+p{
+
+    color: #000000;
+}
+#form{
+    background-color: white;
+    margin-left: 20%;
+    Width:761px;
+    height: 50%;    
+}
+
+
+
+
+
