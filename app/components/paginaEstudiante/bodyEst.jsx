@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './bodyEst.css'
 
 class VistaEst extends Component{
     constructor(props){
@@ -50,6 +51,9 @@ class VistaEst extends Component{
         return(
             <div className="fondoEst">
                 <div>
+                    <button className="btnIconos">
+                        <i className="fa fa-search" ></i>
+                    </button>
                     <input type="text" placeholder="Buscador de Cursos" className="inputPagEst"/>
                     <p> Ordenar cursos </p>
                 </div>
