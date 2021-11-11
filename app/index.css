@@ -39,7 +39,7 @@ body{
 .curseDescription{
   padding-block-start: 0.5cm;
   line-height: 1.8;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
 }
 
 .titulo{
@@ -49,7 +49,7 @@ body{
 
 .appBar{
   height: 125px;
-  margin: -1%;
+  margin: -0.6%;
   background-color: #2F5D62;
   margin-bottom: 25px;
 }
@@ -120,8 +120,8 @@ body{
 #elementosDelCarrusel {
   display: inline-table;
   /*justify-content: center;*/
-  width: 300px;
-  height: 350px;
+  width: 280px;
+  height: 370px;
   margin-left: 0.5%;
   margin-right: 0.5%;
   margin-bottom: 1%;
@@ -136,20 +136,40 @@ body{
 }
 
 .elementos-carrusel{
-  /*justify-content: center;*/
+  justify-content: center;
+  display: inline-table;
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background-color: #2F5D62;
+  background-color: #DFEEEA; /* Boton se camufla con fondo*/
+  border:none;
   color: white;
-  font-size: 15px;
+  padding: 0px;
+  font-size: 1.5em;
+  font-size: 18px;
+  /* outline: inherit; */
+  
+  /*Cambio fred*/
+  padding: 10px 0;  /*esto hace que la imagen ocupe todo el ancho*/
   
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-
+.linkCurso{ /* Conserva la apariencia del boton pero ahora original para evitar bug de bordes*/
+  width: 100%;
+  height: 100%;
+  background-color: #2F5D62; 
+  border: solid 2px rgba(0,0,0, .2);
+  justify-content: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 0px;
+}
 .infoBtnCurso{
   margin: auto;
 }
@@ -203,7 +223,7 @@ body{
   border-left: 30px solid #5E8B7F;
   border-top: 30px solid transparent;
   border-bottom: 30px solid transparent; 
-  
+  cursor: pointer;
 }
 /* las flechas izq*/
 .Bt-Flecha1{
@@ -215,6 +235,7 @@ body{
   border-right: 30px solid #5E8B7F;
   border-top: 30px solid transparent;
   border-bottom: 30px solid transparent;
+  cursor: pointer;
 }
 .fondoCurso{
   background-color:#DFEEEA;
@@ -417,6 +438,41 @@ body{
 .filtro input[type='text']:focus{
   border: solid 2px rgba(20, 143, 119, 1);
   outline: none;
+}
+
+.fondoEst{
+  background-color: #DFEEEA;  /*que es esto?*/
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  height: 100%;
+  width: 101.2%;
+  margin: -0.6%;
+  margin-top: -25px;
+  padding: 1.5em;
+}
+
+.inputPagEst{
+  text-align: center;
+}
+
+.contCursosEst{
+  align-content: center;
+  padding-left: 12em;
+  padding-right: 12em;
+}
+
+.linkCursoEst{
+  width: 100%;
+  height: 100%;
+  background-color: #A7C4BC;
+  box-sizing: border-box;
+  border-radius: 10px;
+  justify-content: center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 10px;
 }
 
 /* .filtro input[type='submit']{} */
