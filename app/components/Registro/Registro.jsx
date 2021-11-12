@@ -4,14 +4,53 @@ import './Registro.css'
 class Registro extends Component{
     constructor(props){
         super(props);
+        this.state  ={
+            errorVacioNombre        : false,
+            errorCaraEspeciNombre   : false,
+            maximoCaraNombre        : false,
+            minimoCaraNombre        : false,
+            cadVaciasNombre         : false,
+
+            errorVacioApellido      : false,
+            errorCaraEspeciApellido : false,
+            maximoCaraApellido      : false,
+            minimoCaraApellido      : false,
+            cadVaciasApellido       : false,
+
+            maximoCaraCorreo        : false,
+            dominioFalCorreo        : false,
+            correoExistente         : false,
+            puntosContinuosCorreo   : false,
+            maximoCaraCorreo        : false,
+            dominioFalCorreo        : false,
+            correoExistente         : false,
+            puntosContinuosCorreo   : false,
+            minimoCaraCorreo        : false,
+            cadVacioCorreo          : false,
+            cadVaciasCorreo         : false,
+
+            minimoCaraContrase      : false,
+            cadVacioContrase        : false,
+            cadContraseIdenticas    : false,
+            almenosDosNumContrase   : false,
+            confirmarContrase       : false,
         
-        /**MESAJES DE ERROR QUE ESTARAN DEBAJO DE ALGUN CAMPO DONDE SE HALLA COMETIDO EL ERROR */
-
-        /** */
-
-
+        }
+              
+      
     }
-    
+    nose (){
+                           
+        }
+        
+    validarNombre(){
+        this.setState({
+            errorCaraEspeciNombre:true,
+
+        })
+            
+    }
+
     render(){
         return(
             <html lang="en">
@@ -23,7 +62,7 @@ class Registro extends Component{
                 <title>Document</title>
             </head>
             <body>
-                <form id='form' action="/action_page.php" className="w3-container w3-card-4 w3-light-grey w3-text-blue">
+                <form id='form' action="/action_page.php" className="w3-container w3-card-4 w3-light-grey">
                 <h2 id='TituloPrin' className="w3-center">Registrate en Wdemy</h2>
                 <div className="w3-row w3-section">
                     
@@ -37,20 +76,20 @@ class Registro extends Component{
                         </div>
                         
                         <div className='alertsIzq'>
-                            <p>El campo nombre(s) no debe  estar vacio</p>                            
-                            <p>No debe  contener caracteres especiales</p>
-                            <p>El nombre debe tener máximo 25 caracteres</p>
-                            <p>El nombre debe tener mínimamente 2 caracteres</p>
-                            <p>El nombre no debe contener cadenas de caracteres vacias</p>
+                            {this.state.errorVacioNombre?       <p>El campo nombre(s) no debe  estar vacio</p>                  : null}
+                            {this.state.errorVacioApellido?     <p>No debe  contener caracteres especiales</p>                  : null}
+                            {this.state.maximoCaraNombre?       <p>El nombre debe tener máximo 25 caracteres</p>                : null}
+                            {this.state.minimoCaraNombre?       <p>El nombre debe tener mínimamente 2 caracteres</p>            : null}
+                            {this.state.cadVaciasNombre?        <p>El nombre no debe contener cadenas de caracteres vacias</p>  : null}
                             
 
                         </div>
                         <div className='alertsDere'>
-                            <p>El campo apellidos no debe estar vacio</p>
-                            <p>No debe  contener caracteres especiales</p>
-                            <p>El apellido debe tener máximo 25 caracteres</p>
-                            <p>Los apellidos deben tener mínimamente 6 caracteres</p>            
-                            <p>Los apellidos no debe contener cadenas de caracteres vacias</p>            
+                            {this.cadVaciasApellido?        <p>El campo apellidos no debe estar vacio</p>                       : null}
+                            {this.errorCaraEspeciApellido?  <p>No debe  contener caracteres especiales</p>                      : null}
+                            {this.maximoCaraApellido?       <p>El apellido debe tener máximo 25 caracteres</p>                  : null}
+                            {this.minimoCaraApellido?       <p>Los apellidos deben tener mínimamente 6 caracteres</p>           : null}
+                            {this.cadVaciasApellido ?       <p>Los apellidos no debe contener cadenas de caracteres vacias</p>  : null}
 
                 
 
@@ -97,9 +136,7 @@ class Registro extends Component{
                         </div>
 
                         <div className='alertsDere'>
-                        <p>Debe tener por lo menos 8 caracteres</p>
                         <p>Las contraseñas deben de ser idénticas</p>
-                        <p>Debe confirmar su contraseña</p>
                         </div>
 
 
@@ -107,7 +144,8 @@ class Registro extends Component{
                     
                 </div>
                 <div>
-                    <button id='botonRegis' class="w3-button " >Registrase</button>
+
+                    <button id='botonRegis' Click={this.validarNombre}>Registrase</button>
                 </div>
 
                 <div class='enlaceLogin'>
