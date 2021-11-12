@@ -19,6 +19,7 @@ class Registro extends Component{
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+                <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
                 <title>Document</title>
             </head>
             <body>
@@ -27,11 +28,33 @@ class Registro extends Component{
                 <div className="w3-row w3-section">
                     
                     <div id='campNomApe' className="w3-rest">
-                        <i id='logNomApe' class="w3-xxlarge fa fa-envelope-o"></i>
+                        <i id='logNomApe' class="fa fa-male"></i>
+                        <div>
+                            <input id='campNombre' className="w3-input w3-border" name="first" type="text" placeholder="Nombre(s)"/>
+                            
 
-                        <input id='campNombre' className="w3-input w3-border" name="first" type="text" placeholder="Nombre(s)"/>
+                            <input id='campApelli' class="w3-input w3-border" name="last" type="text" placeholder="Apellidos" />
+                        </div>
+                        
+                        <div className='alertsIzq'>
+                            <p>El campo nombre(s) no debe  estar vacio</p>                            
+                            <p>No debe  contener caracteres especiales</p>
+                            <p>El nombre debe tener máximo 25 caracteres</p>
+                            <p>El nombre debe tener mínimamente 2 caracteres</p>
+                            <p>El nombre no debe contener cadenas de caracteres vacias</p>
+                            
 
-                        <input id='campApelli' class="w3-input w3-border" name="fisrt" type="text" placeholder="Apellidos" />
+                        </div>
+                        <div className='alertsDere'>
+                            <p>El campo apellidos no debe estar vacio</p>
+                            <p>No debe  contener caracteres especiales</p>
+                            <p>El apellido debe tener máximo 25 caracteres</p>
+                            <p>Los apellidos deben tener mínimamente 6 caracteres</p>            
+                            <p>Los apellidos no debe contener cadenas de caracteres vacias</p>            
+
+                
+
+                        </div>
                     
                     </div> 
                 
@@ -41,9 +64,21 @@ class Registro extends Component{
 
                         <div class="w3-rest">
 
-                        <input id='campoCorreo'  class="w3-input w3-border" name="email" type="text" placeholder="@gmail.com" />
+                        <input id='campoCorreo'  class="w3-input w3-border" name="email" type="text" placeholder="correo" />
 
                         </div>
+
+                        <div className='alersCorreo'>
+                            <p>El correo debe contener como maximo 50 caracteres.</p>
+                            <p>El correo debe contener un dominio</p>
+                            <p>El correo que ingresó ya está registrado</p>
+                            <p>El correo que ingresó tiene más de dos puntos continuos</p>
+                            <p>El correo que ingrese debe contener más de 5 caracteres</p>
+                            <p>El correo que ingresó debe contener como maximo 50 caracteres</p>
+                            <p>El campo correo no debe estar vacio</p>
+                            <p>El correo no debe contener cadenas de caracteres vacias</p>
+                        </div>
+
                     </div>
 
                     <div id='campContrasenias' >
@@ -53,6 +88,21 @@ class Registro extends Component{
 
                         <input id='campConfContr'  class="w3-input w3-border" name="password" type="password" placeholder="confirmar contraseña" />
 
+                        <div className='alertsIzq'>
+                            <p>Debe tener por lo menos 8 caracteres</p>
+                            <p>El campo contraseña no debe estar vacio</p>
+                            <p>Las contraseñas deben de ser idénticas</p>
+                            <p>Debes introducir al menos 2 numeros en tu contraseña</p>
+                            <p>Debe confirmar su contraseña</p>
+                        </div>
+
+                        <div className='alertsDere'>
+                        <p>Debe tener por lo menos 8 caracteres</p>
+                        <p>Las contraseñas deben de ser idénticas</p>
+                        <p>Debe confirmar su contraseña</p>
+                        </div>
+
+
                     </div>
                     
                 </div>
@@ -61,10 +111,10 @@ class Registro extends Component{
                 </div>
 
                 <div class='enlaceLogin'>
-                    <p>
+                    <p id='letra'>
                         ya tienes cuenta
                     </p>
-                    <a href="/login">iniciar sesion</a>
+                    <a id='enlace' href="/login">iniciar sesion</a>
 
                 </div>
 

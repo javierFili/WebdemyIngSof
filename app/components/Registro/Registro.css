@@ -1,33 +1,65 @@
 #TituloPrin{
     margin-top: 5%;
     color: black;
+    font-family: 'Times New Roman', Times, serif;
     
 }
-
+/*El input de nombres y apellidos nas sus alertas*/
 #logNomApe{
     width: 10%;
     float: left;
     padding: 15px;
+    margin-left: 3%;
 }
 #campNombre{
-    width: 45%;
+    width: 35%;
     height: 10px;
     float: left;
     padding: 15px;
+    border-radius: 10px;
 }
 
 #campApelli{
-    width: 45%;
+    width: 35%;
     height: 10px;
     float: left;
     padding: 15px;
-
+    margin-left: 5%;
+    border-radius: 10px;
 }
 
 #campNomApe{
     margin-top: 4%;
 }
 
+.alertsIzq{
+    width: 35%;
+    float: left;
+    padding: 15px;
+    color: red;
+    font-size: 10px;
+}
+
+.alertsDere{
+    margin-left: 3%;
+    width: 35%;
+    height: 10px;
+    float: left;
+    padding: 15px;
+    color: red;
+    font-size: 10px;
+    
+}
+
+.alersCorreo{
+    color: red;
+    margin-left: 30%;
+    font-size: 10px;
+}
+
+/*fin El input de nombres y apellidos nas sus alertas*/
+
+/*El input de correo nas sus alertas*/
 #campCorr{
     margin-top: 50px;
 }
@@ -37,20 +69,26 @@
     height: 10px;
     float: left;
     padding: 15px;   
+    border-radius: 10px;
 }
 
 #logoCorreo{
+    margin-left: 3%;
     width: 10%;
     height: 10px;
     float: left;
     padding: 15px;  
 }
 
+/* fin El input de nombres y apellidos nas sus alertas*/
+
+/*El input de contrase;a y confirmarContrase;a nas sus alertas*/
 #campContrasenias{
     margin-top: 50px;
 }
 
 #logoContras{
+    margin-left: 3%;
     width: 10%;
     float: left;
     padding: 15px;
@@ -58,20 +96,25 @@
 }
 
 #campContras{
-    width: 45%;
+    width: 35%;
     height: 10px;
     float: left;
     padding: 15px;
+    border-radius: 10px;
 
 }
 
 #campConfContr{
-    width: 45%;
+    width: 35%;
     height: 10px;
     float: left;
+    margin-left: 5%;
     padding: 15px;
+    border-radius: 10px;
 
 }
+/*El input de nombres y apellidos nas sus alertas*/
+
 
 /*a revisar*/
 
@@ -87,11 +130,16 @@
     
 }
 
-#enlaceLogin{
-    
+#enlace{
+    width:50%;
+    float: left;
+    padding: 15px;
 }
-p{
 
+#letra{
+    width: 50%;
+    float: left;
+    padding: 15px;
     color: #000000;
 }
 #form{
@@ -103,5 +151,16 @@ p{
 
 
 
+*{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-webkit-box-sizing: border-box;
+  }
 
 
+
+
+  body{
+    font-family: 'Roboto', sans-serif;
+  }

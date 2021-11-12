@@ -1,5 +1,4 @@
 import React from 'react';
-
 import AppBar from './components/appBarComponents/AppBar.jsx';
 import Body from './components/body-components/Body.jsx';
 import Inicio from './components/VistaInfoCurso/Inicio.jsx';
@@ -103,7 +102,7 @@ function App() {
 
           {/* esta de modificarPara que revisa, us y contra */}
             <Route exact path="/login">
-              
+
               <VistaLogin/>
 
             </Route>
