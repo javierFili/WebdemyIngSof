@@ -9,7 +9,7 @@ class InicioDeSesion extends Component{
     render(){
         return(
             <div>
-                <h1>Pasa !!</h1>
+                
             </div>
         );
     }
