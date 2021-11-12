@@ -90,7 +90,7 @@ router.post('/registrar', async (req,res)=> {
     
     let salt = bcrypt.genSaltSync();
     let hash = bcrypt.hashSync(pass,salt);
-/*
+/*/*
     res.json({
         usuario, 
         hash,
