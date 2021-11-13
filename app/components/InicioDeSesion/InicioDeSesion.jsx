@@ -21,22 +21,24 @@ class InicioDeSesion extends Component{
             <body>
                  
                  <form id='form'  action="/action_page.php" className="w3-container w3-card-4 w3-light-white w3-text-Black w3-margin">
-                    <div className="w3-center">
-                        <h1>Bienvenido a Wdemy</h1>
+                    <div className="w3-row w3-section" className="w3-center">
+                        
+                        <h1 className="w3-center">Bienvenido a Wdemy</h1>
                         
                         
-                        <input id='prinPar' className="w3-center" class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" />
+                        <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" />
                         <br />
                         <input id='prinPar'  class="w3-input w3-border" name="password" type="Password" placeholder="contraseña" />
                         <br />
-                        <button id='btnIni' class="w3-button ">Iniciar Sesion</button>
+                        <button  id='btnIni'  class="w3-button " >Iniciar Sesion</button>
                         <br />
                         
-                            <p id='letra'>¿aun no tienes cuenta?</p>
+                        <div  className="enlaceComp" >
+                        <p id="letra" >¿aun no tienes cuenta?</p>
                             <a id='enlace' href="/register">registrarse</a>
-                        
+                        </div>
                     </div>
-                    
+                        
                  </form>
                  
             </body>
