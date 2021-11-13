@@ -26,14 +26,6 @@ class Registro extends Component{
                 <form id='form' action="/action_page.php" className="w3-container w3-card-4 w3-light-grey w3-text-blue">
                 <h2 id='TituloPrin' className="w3-center">Registrate en Wdemy</h2>
                 <div className="w3-row w3-section">
-<<<<<<< HEAD
-                    {/* <div className="w3-col"  > <i className = "w3-xxlarge fa fa-user"></i></div>                             */}
-                    <div className="w3-rest">
-                    <input id='prinPar' className="w3-input w3-border" name="first" type="text" placeholder="Nombre(s)" />
-                    
-                    <input id='prinPar' class="w3-input w3-border" name="last" type="text" placeholder="Apellidos" />
-=======
->>>>>>> segunSprintJavi
                     
                     <div id='campNomApe' className="w3-rest">
                         <i id='logNomApe' class="fa fa-male"></i>

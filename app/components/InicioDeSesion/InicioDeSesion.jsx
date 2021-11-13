@@ -8,7 +8,6 @@ class InicioDeSesion extends Component{
 
     render(){
         return(
-<<<<<<< HEAD
            
             <html lang="en">
             <head>
@@ -31,18 +30,18 @@ class InicioDeSesion extends Component{
                         <input id='prinPar'  class="w3-input w3-border" name="password" type="Password" placeholder="contraseña" />
                         <br />
                         <button id='btnIni' class="w3-button ">Iniciar Sesion</button>
+                        <br />
+                        
+                            <p id='letra'>¿aun no tienes cuenta?</p>
+                            <a id='enlace' href="/register">registrarse</a>
+                        
                     </div>
-                   
+                    
                  </form>
                  
             </body>
             </html>
             
-=======
-            <div>
-                
-            </div>
->>>>>>> segunSprintJavi
         );
     }
 }
