@@ -77,7 +77,7 @@ class Registro extends Component{
                 <title>Document</title>
             </head>
             <body>
-                <form id='form' action="/action_page.php" className="w3-container w3-card-4 w3-light-grey">
+                <div id='form'  className="w3-container w3-card-4 w3-light-grey">
                 <h1 id='TituloPrin' className="w3-center">Registrate en Wdemy</h1>
                 <div className="w3-row w3-section">
                     
@@ -110,17 +110,11 @@ class Registro extends Component{
                             </div>
                         </div>
                     
-                    </div> 
-                
-
+                    </div>                 
                     <div id='campCorr' class="w3-row w3-section">
-
                         <i id='logoCorreo' class="w3-xxlarge fa fa-envelope-o"></i>
-
                         <div class="w3-rest">
-
-                        <input id='campoCorreo'  class="w3-input w3-border" name="email" type="text" placeholder="correo" />
-
+                            <input id='campoCorreo'  class="w3-input w3-border" name="email" type="text" placeholder="correo" />
                         </div>
 
                         <div className='alersCorreo'>
@@ -130,10 +124,7 @@ class Registro extends Component{
                             {this.state.puntosContinuosCorreo?<p>El correo que ingresó tiene más de dos puntos continuos</p>  : null }
                             {this.state.minimoCaraCorreo?     <p>El correo que ingrese debe contener más de 5 caracteres</p>  : null }                            
                             {this.state.cadVacioCorreo?       <p>El campo correo no debe estar vacio</p>                      : null }
-                            {this.state.cadVaciasCorreo?      <p>El correo no debe contener cadenas de caracteres vacias</p>  : null }
-
-                            
-
+                            {this.state.cadVaciasCorreo?      <p>El correo no debe contener cadenas de caracteres vacias</p>  : null }                            
                         </div>
 
                     </div>
@@ -162,7 +153,7 @@ class Registro extends Component{
                 </div>
                 <div>
 
-                    <button className="w3-btn " id='botonRegis' onSubmit={this.validarNombre}>
+                    <button className="w3-btn " id='botonRegis' onClick={this.validarNombre}>
                          Registrarse
                     </button>
                     
@@ -175,8 +166,7 @@ class Registro extends Component{
                     
                 </div>
 
-                </form>
-                <button className="w3-btn " onClick={this.validarNombre}>nose1</button>
+                </div>                
                 </body>
             </html>
             
