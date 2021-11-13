@@ -33,6 +33,8 @@
 }
 .enlaceComp{
     display: flex;
+    margin-left: 35%;
+    margin-bottom: 10%;
 }
 #form{
      /* display: flex; */ 
