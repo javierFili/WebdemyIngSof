@@ -51,17 +51,20 @@ class AppBar extends Component {
         return (
             <div>
                 <div className="appBar">
+
                     <div className="appBarIzq">
                         <Menu />
                     </div>
+
                     <div className="appBarDere">
+
                        { this.showButtonRegister? null :
-                        <button className="w3-button w3-black" onClick={this.openPagRegister}>
+                        <button id="ButtonRegister" className="w3-button" onClick={this.openPagRegister}>
                             Registrarse
                         </button>                        
                         }
                         {this.showButtonLogin? null:
-                        <button className="w3-button w3-black" onClick={this.openPagLogin}>
+                        <button id="ButtonLogin" className="w3-button " onClick={this.openPagLogin}>
                              iniciar sesion
                         </button> 
                         
