@@ -20,13 +20,16 @@ class InicioDeSesion extends Component{
             </head>
             <body>
                  
-                 <form id='form'  action="/action_page.php" className="w3-container w3-card-4 w3-light-white w3-text-Black w3-margin">
+                 <form id='form'  action="/action_page.php" className="w3-container w3-card-4 w3-light-grey w3-text-Black w3-margin">
                     <div className="w3-row w3-section" className="w3-center">
                         
                         <h1 className="w3-center">Bienvenido a Wdemy</h1>
                         
+                        <div>
+                            
+                            <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" />
+                        </div>
                         
-                        <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" />
                         <br />
                         <input id='prinPar'  class="w3-input w3-border" name="password" type="Password" placeholder="contraseña" />
                         <br />
