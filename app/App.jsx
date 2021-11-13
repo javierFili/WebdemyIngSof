@@ -1,5 +1,4 @@
 import React from 'react';
-
 import AppBar from './components/appBarComponents/AppBar.jsx';
 import Body from './components/body-components/Body.jsx';
 import Inicio from './components/VistaInfoCurso/Inicio.jsx';
@@ -53,16 +52,27 @@ function VistaEstudiante(){
 
 function VistaRegistro(){
   return(
-    <Router>
-      
+    <Router>      
         <AppBar showButtRegis='false' showButtLogin='false' />
         <Registro>
-
       </Registro>
     </Router>
   );
 }
 
+function VistaLogin(){
+  return(
+    <Router>      
+        <AppBar showButtRegis='false' showButtLogin='false' />
+
+        <InicioDeSesion>
+
+        </InicioDeSesion>
+        
+    </Router>
+  );
+
+}
 
 
 function App() {
@@ -92,11 +102,9 @@ function App() {
 
           {/* esta de modificarPara que revisa, us y contra */}
             <Route exact path="/login">
-              <InicioDeSesion>
-                <AppBar>
 
-                </AppBar>
-              </InicioDeSesion>
+              <VistaLogin/>
+
             </Route>
 
             <Route component={NotFound} /> 

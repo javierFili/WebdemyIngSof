@@ -8,6 +8,7 @@ class InicioDeSesion extends Component{
 
     render(){
         return(
+<<<<<<< HEAD
            
             <html lang="en">
             <head>
@@ -37,6 +38,11 @@ class InicioDeSesion extends Component{
             </body>
             </html>
             
+=======
+            <div>
+                
+            </div>
+>>>>>>> segunSprintJavi
         );
     }
 }
