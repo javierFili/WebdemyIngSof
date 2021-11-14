@@ -49,8 +49,11 @@ class Registro extends Component{
         this.validarAllCampos    = this.validarAllCampos.bind(this);
         this.devolverValoresState= this.devolverValoresState.bind(this);
 
-        this.validarNombre       = this.validarNombre.bind(this);
-        this.validarApellido     = this.validarApellido.bind(this);
+        this.validarNombre        = this.validarNombre.bind(this);
+        this.validarApellido      = this.validarApellido.bind(this);
+        this.validarCorreo        = this.validarCorreo.bind(this);
+        this.validarConfirContrase= this.validarConfirContrase.bind(this);
+        this.validarContrase      = this.validarContrase.bind(this); 
       
 
     }
@@ -117,58 +120,71 @@ class Registro extends Component{
     validarAllCampos(){
         var res = false;
         this.devolverValoresState();
-        this.validarApellido();
-        this.validarNombre();
-        this.validarCorreo();
-        this.validarContrase();
-        this.validarConfirContrase();
-        
-        /* if(this.validarNombre() && this.validarApellido() && 
-            this.validarCorreo() && 
-            this.validarContrase() && this.validarConfirContrase()){
-                
+        var contrase = this.validarContrase();
+        var confirCon= this.validarConfirContrase();
+        var firsName = this.validarApellido();
+        var lastName = this.validarNombre();
+        var emailVal = this.validarCorreo();
+        if(firsName && lastName && emailVal && contrase && confirCon){                
                 res = true;
-        } */
-        
+        }        
         return res;
-
     }
 
     validarConfirContrase(){
         var res = true;
-        if(llenadoContr !== this.state.campoConfirContraseña){
+        if(this.state.campoContraseña !== this.state.campoConfirContraseña){
             this.setState({cadContraseIdenticas : true});
             res = false;
         }
         return res;
     }
 
+    almenos2num(cadTest){
+        var res     = false;
+        var cadNums = 0;
+        for(var i = 0 ; i < cadTest.length ; i++){
+            var letraNum = cadTest[i];
+            if(/^[0-9]+$/.test(letraNum) ){
+                cadNums++;
+            }            
+        }
+        if(cadNums >= 2){
+            res = true;
+        }
+
+        return res;
+    }
     validarContrase(){
         var res = true;
         var llenadoContr = this.state.campoContraseña;
-        if(llenadoContr !== this.state.campoConfirContraseña){
+        if(llenadoContr != this.state.campoConfirContraseña){
             this.setState({cadContraseIdenticas : true});
             res = false;
         }
-        if(llenadoContr.length === 0){
+        if(llenadoContr.length == 0){
             this.setState({cadVacioContrase : true});
             res = false;
         }
         if(llenadoContr.length < 8){
             this.setState({minimoCaraContrase : true});
+            res = false;
         }
-        if(llenadoContr.includes("1234567890")){
-
+        if(!this.almenos2num(llenadoContr)){
+            this.setState({almenosDosNumContrase:true});
+            res = false;
 
         }
         if(this.state.campoConfirContraseña.length === 0){
             this.setState({confirmarContrase:true});
+            res = false;
         }
         return res;
     }
 
     correoExiste(){
-        return false;
+        //esto se hace con la base de datos .
+        return true;
     }
 
     validarCorreo(){
@@ -178,7 +194,15 @@ class Registro extends Component{
             this.setState({maximoCaraCorreo:true});
             res = false;
         }
-        if(llenadoCor.includes("@")){
+        if(llenadoCor.length <= 5){
+            this.setState({minimoCaraCorreo:true});
+            res = false;
+        }
+        if(llenadoCor.length == 0){
+            this.setState({cadVacioCorreo:true});
+            res = false;
+        }
+        if(!llenadoCor.includes("@")){
             this.setState({dominioFalCorreo:true});
             res = false;
             //investigar sobre el dominio.
@@ -192,14 +216,6 @@ class Registro extends Component{
             this.setState({puntosContinuosCorreo:true});
             res = false;
         }
-        if(llenadoCor.length === 5){
-            this.setState({minimoCaraCorreo:true});
-            res = false;
-        }
-        if(llenadoCor.length ===0){
-            this.setState({cadVacioCorreo:true});
-            res = false;
-        }
         if(llenadoCor.includes("  ")){
             this.setState({cadVaciasCorreo:true});
             res = false;
@@ -208,15 +224,14 @@ class Registro extends Component{
     }
 
     validarApellido(){
-        var res = true;
-        
+        var res = true;        
         var nombreLlenado = this.state.campoApellido;
-        if(nombreLlenado.length === 0){
+        if(nombreLlenado.length == 0){
+            console.log("eaqui noasm");
             this.setState({errorVacioApellido:true});  
             var res = false;
         }
-        if(/[^A-Za-z-ZñÑáéíóúÁÉÍÓÚ0-9\s/d]/.test(nombreLlenado)){
-            //no estamos validando el "/"
+        if(/[^A-Za-z-ZñÑáéíóúÁÉÍÓÚ0-9\sd]/.test(nombreLlenado)){            
             this.setState({errorCaraEspeciApellido : true});
             var res = false;
         }
@@ -243,7 +258,7 @@ class Registro extends Component{
             this.setState({errorVacioNombre:true});  
             var res = false;
         }
-        if(  /[^A-Za-z-ZñÑáéíóúÁÉÍÓÚ0-9\s/d]/.test(nombreLlenado)){
+        if(/[^A-Za-z-ZñÑáéíóúÁÉÍÓÚ0-9\sd]/.test(nombreLlenado)){
             //no estamos validando el "/"
             this.setState({errorCaraEspeciNombre : true});
             var res = false;
@@ -300,7 +315,7 @@ class Registro extends Component{
                                 <input id='campApelli' class="w3-input w3-border" name="last" type="text" placeholder="Apellidos" 
                                     value={this.state.campoApellido} onChange={this.firstNameChange}
                                 />
-                                {this.state.cadVaciasApellido?        <p>El campo apellidos no debe estar vacio</p>                       : null }
+                                {this.state.errorVacioApellido?        <p>El campo apellidos no debe estar vacio</p>                       : null }
                                 {this.state.errorCaraEspeciApellido?  <p>No debe  contener caracteres especiales</p>                      : null }
                                 {this.state.maximoCaraApellido?       <p>El apellido debe tener máximo 25 caracteres</p>                  : null }
                                 {this.state.minimoCaraApellido?       <p>Los apellidos deben tener mínimamente 6 caracteres</p>           : null }
@@ -312,7 +327,7 @@ class Registro extends Component{
                     </div>                 
                     <div id='campCorr' class="w3-row w3-section">
                         <i id='logoCorreo' class="w3-xxlarge fa fa-envelope-o"></i>
-                        <div class="w3-rest">
+                        <div className="w3-rest">
                             <input id='campoCorreo'  class="w3-input w3-border" name="email" type="text" placeholder="correo" 
                                 value={this.state.campoCorreo} onChange={this.correoChange}
                             />
@@ -361,7 +376,6 @@ class Registro extends Component{
                     </button>
                     
                 </div>
-
                
                 <div className='enlacePre' >
                     <p >¿ya tienes cuenta?</p>
