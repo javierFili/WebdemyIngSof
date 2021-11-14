@@ -4,7 +4,57 @@ import './inicioSesion.css'
 class InicioDeSesion extends Component{
     constructor(props){
         super(props);
+        this.state={
+            email   :"",
+            password :"",
+            errorContraseña :false,
+            errorCorreo :false
+        }
+        this.mailChange          = this.mailChange.bind(this);
+        this.contraChange          = this.contraChange.bind(this);
     }
+    mailChanche(event){
+        this.setState({campoCorreo: event.target.value});
+    }
+    contraChange(event){
+        this.setState({campoContra: event.target.value});
+    }
+
+    validarIniciSecion(event){
+        var todoBienTodoCorrecto = this.validarAllCampos();
+        //se hace la consulta en aqui
+        
+        if(todoBienTodoCorrecto){
+            // se comprueba la base de datos
+        }else{
+            
+        }
+
+    }
+    validarAllCampos(){
+        var res = false;
+        this.devolverValoresState();
+        this.validarCorreo();
+        this.validarContra();
+    }
+
+    validarCorreo(){
+        var res = true;
+        var estadoCor = this.state.campoCorreo;
+        if(estadoCor==""){
+            res =false;
+        }else{}
+        return res;
+    }
+    validarContra(){
+        var res = true;
+        var estadoCont = this.state.campoContra;
+        if(estadoCont==""){
+            res =false;
+        }else{}
+        return res;
+    }
+
 
     render(){
         return(
@@ -26,14 +76,22 @@ class InicioDeSesion extends Component{
                         <h1 className="w3-center">Bienvenido a Wdemy</h1>
                         
                         <div>
-                            
-                            <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" />
+                            <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" 
+                            value={this.state.campoCorreo} onChange={this.mailChanche}
+                            />
+                            {this.state.errorCorreo?    <p>correo electronico incorrecto</p>                  : null }
                         </div>
                         
                         <br />
-                        <input id='prinPar'  class="w3-input w3-border" name="password" type="Password" placeholder="contraseña" />
+                        <div>
+                            <input id='prinPar'  class="w3-input w3-border" name="password" type="Password" placeholder="contraseña" 
+                            value={this.state.campoContra} onChange={this.contraChanche}
+                            />
+                            {this.state.errorContraseña?       <p>la contraseña es incorrecta</p>                  : null }
+                        </div>
+                        
                         <br />
-                        <button  id='btnIni'  class="w3-button " >Iniciar Sesion</button>
+                        <button  id='btnIni'  class="w3-button " onClick={this.validarRegistro}>Iniciar Sesion</button>
                         <br />
                         
                         <div  className="enlaceComp" >
