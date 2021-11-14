@@ -12,7 +12,9 @@ class VistaEst extends Component{
         this.fetchCourse = this.fetchCourse.bind(this);
         this.cortar = this.cortar.bind(this);
         this.refrescarPagina = this.refrescarPagina.bind(this);
-        this.mostrar = this.mostrar.bind(this);
+        this.listOrd = this.listOrd.bind(this);
+        this.ordAlf = this.ordAlf.bind(this);
+        this.ordFecha = this.ordFecha.bind(this);
     
         this.nombreAbuscar = "";
     }
@@ -48,8 +50,20 @@ class VistaEst extends Component{
         window.location.href = window.location.href;
     }
 
-    mostrar(){
+    listOrd(){
         console.log("Se muestra lista");
+        var x = document.getElementById("listaOrden");
+        if (x.className.indexOf("w3-show") == -1) { 
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+    ordAlf(){
+        this.fetchCourse();
+    }
+    ordFecha(){
+        this.setState({cursos: []}); /* Ejemplo de funcionamiento */
     }
 
     render() {
@@ -70,9 +84,13 @@ class VistaEst extends Component{
                         </div>
 
                         <div className="w3-container w3-cell w3-cell-middle iconoOrd">
-                            <button className="btnIconos" onClick={this.mostrar}>
+                            <button className="btnIconos w3-button" onClick={this.listOrd}>
                                 <i className="fa fa-bars w3-xxlarge" ></i>
-                            </button>    
+                            </button>
+                            <div id="listaOrden" className="w3-dropdown-content w3-bar-block w3-border">
+                                <button onClick={this.ordAlf} className="w3-bar-item w3-border opcionDropd">Alfabeticamente</button>
+                                <button onClick={this.ordFecha} className="w3-bar-item w3-border opcionDropd">Por fecha creac.</button>
+                            </div>
                         </div>
                     </div>
                     

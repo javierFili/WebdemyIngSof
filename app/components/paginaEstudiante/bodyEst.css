@@ -48,6 +48,7 @@
     background-color: #DFEEEA;
     height: 5em;
     width: 5em;
+    cursor: pointer;
   }
 
   .iconoBtn{
@@ -110,4 +111,19 @@
   #txtOrdCursos{
     font-size: 24px;
     color: #5E8B7E;
+  }
+  
+  .dropdownOrd{
+    align-content: middle; /*no afecta en nada*/
+  }
+
+  #listaOrden{
+    margin-left: -2em;
+  }
+
+  .opcionDropd{
+    text-align: center;
+    background-color: #13383C;
+    color: white;
+    cursor: pointer;
   }
