@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import { withRouter } from "react-router-dom";
 import './inicioSesion.css'
 class InicioDeSesion extends Component{
-    constructor(props){
+    /**constructor(props){
         super(props);
         this.state={
-            email   :"",
-            password :"",
+            campoCorreo   :"",
+            campoContra :"",
             errorContraseña :false,
             errorCorreo :false
         }
@@ -33,9 +33,9 @@ class InicioDeSesion extends Component{
     }
     validarAllCampos(){
         var res = false;
-        this.devolverValoresState();
+         this.devolverValoresState();
         this.validarCorreo();
-        this.validarContra();
+        this.validarContra(); 
     }
 
     validarCorreo(){
@@ -53,7 +53,7 @@ class InicioDeSesion extends Component{
             res =false;
         }else{}
         return res;
-    }
+    } */
 
 
     render(){
@@ -77,21 +77,21 @@ class InicioDeSesion extends Component{
                         
                         <div>
                             <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" 
-                            value={this.state.campoCorreo} onChange={this.mailChanche}
+                            /* value={this.state.campoCorreo} onChange={this.mailChange} */
                             />
-                            {this.state.errorCorreo?    <p>correo electronico incorrecto</p>                  : null }
+                            {/* {this.state.errorCorreo?    <p>correo electronico incorrecto</p>                  : null } */}
                         </div>
                         
                         <br />
                         <div>
-                            <input id='prinPar'  class="w3-input w3-border" name="password" type="Password" placeholder="contraseña" 
-                            value={this.state.campoContra} onChange={this.contraChanche}
+                            <input id='prinPar'  class="w3-input w3-border" name="campoContra" type="Password" placeholder="contraseña" 
+                           /*  value={this.state.campoContra} onChange={this.contraChanche} */
                             />
-                            {this.state.errorContraseña?       <p>la contraseña es incorrecta</p>                  : null }
+                            {/* {this.state.errorContraseña?       <p>la contraseña es incorrecta</p>                  : null } */}
                         </div>
                         
                         <br />
-                        <button  id='btnIni'  class="w3-button " onClick={this.validarRegistro}>Iniciar Sesion</button>
+                        <button  id='btnIni'  class="w3-button " /* onClick={this.validarRegistro} */>Iniciar Sesion</button>
                         <br />
                         
                         <div  className="enlaceComp" >
