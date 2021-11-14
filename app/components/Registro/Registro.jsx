@@ -39,33 +39,232 @@ class Registro extends Component{
         
         }
     
-        this.nameChange         = this.nameChange.bind(this);
-        this.validarNombre      = this.validarNombre.bind(this);
+        this.nameChange          = this.nameChange.bind(this);
+        this.validarRegistro     = this.validarRegistro.bind(this);
+        this.firstNameChange     = this.firstNameChange.bind(this);
+        this.correoChange        = this.correoChange.bind(this);
+        this.passwordChange      = this.passwordChange.bind(this);
+        this.passwordConfirChang = this.passwordConfirChang.bind(this);
+        this.validarAllCampos    = this.validarAllCampos.bind(this);
+        this.validarAllCampos    = this.validarAllCampos.bind(this);
+        this.devolverValoresState= this.devolverValoresState.bind(this);
+
+        this.validarNombre       = this.validarNombre.bind(this);
+        this.validarApellido     = this.validarApellido.bind(this);
       
+
+    }
+
+    devolverValoresState(){
+        this.setState({
+            errorVacioNombre        : false,
+            errorCaraEspeciNombre   : false,
+            maximoCaraNombre        : false,
+            minimoCaraNombre        : false,
+            cadVaciasNombre         : false,
+
+            errorVacioApellido      : false,
+            errorCaraEspeciApellido : false,
+            maximoCaraApellido      : false,
+            minimoCaraApellido      : false,
+            cadVaciasApellido       : false,
+
+            maximoCaraCorreo        : false,
+            dominioFalCorreo        : false,
+            correoExistente         : false,
+            puntosContinuosCorreo   : false,
+            minimoCaraCorreo        : false,
+            cadVacioCorreo          : false,
+            cadVaciasCorreo         : false,
+
+            minimoCaraContrase      : false,
+            cadVacioContrase        : false,
+            cadContraseIdenticas    : false,
+            almenosDosNumContrase   : false,
+            confirmarContrase       : false,
+        
+        });
+    }
+
+    passwordConfirChang(event){
+        this.setState({campoConfirContraseña: event.target.value});
+    }
+
+    passwordChange(event){
+        this.setState({campoContraseña: event.target.value});
+    }
+
+    correoChange(event){
+        this.setState({campoCorreo: event.target.value});
     }
     nameChange(event){
-        this.setState({campoNombre: event.target.campoNombre});  
-        console.log('entra a modificar el nombre');
-        event.preventDefault();
+        this.setState({campoNombre: event.target.value});      
     }
         
-
-    validarNombre(event){
-        this.setState({
-            minimoCaraApellido : true,
-            minimoCaraNombre   : true,
-            confirmarContrase  : true,
-            minimoCaraContrase : true,
-            puntosContinuosCorreo   : true,
-            minimoCaraCorreo        : true,
-            cadContraseIdenticas    : true,
-            almenosDosNumContrase   : true,
-
-
-        })
-            
+    firstNameChange(event){
+        this.setState({campoApellido : event.target.value})
     }
 
+    validarRegistro(event){
+        var todoBienTodoCorrecto = this.validarAllCampos();
+        if(todoBienTodoCorrecto){
+            // se sube ala base de datos .
+        }else{
+            // no se hace nada.
+        }
+    }
+
+    validarAllCampos(){
+        var res = false;
+        this.devolverValoresState();
+        this.validarApellido();
+        this.validarNombre();
+        this.validarCorreo();
+        this.validarContrase();
+        this.validarConfirContrase();
+        
+        /* if(this.validarNombre() && this.validarApellido() && 
+            this.validarCorreo() && 
+            this.validarContrase() && this.validarConfirContrase()){
+                
+                res = true;
+        } */
+        
+        return res;
+
+    }
+
+    validarConfirContrase(){
+        var res = true;
+        if(llenadoContr !== this.state.campoConfirContraseña){
+            this.setState({cadContraseIdenticas : true});
+            res = false;
+        }
+        return res;
+    }
+
+    validarContrase(){
+        var res = true;
+        var llenadoContr = this.state.campoContraseña;
+        if(llenadoContr !== this.state.campoConfirContraseña){
+            this.setState({cadContraseIdenticas : true});
+            res = false;
+        }
+        if(llenadoContr.length === 0){
+            this.setState({cadVacioContrase : true});
+            res = false;
+        }
+        if(llenadoContr.length < 8){
+            this.setState({minimoCaraContrase : true});
+        }
+        if(llenadoContr.includes("1234567890")){
+
+
+        }
+        if(this.state.campoConfirContraseña.length === 0){
+            this.setState({confirmarContrase:true});
+        }
+        return res;
+    }
+
+    correoExiste(){
+        return false;
+    }
+
+    validarCorreo(){
+        var res = true;
+        var llenadoCor = this.state.campoCorreo;
+        if(llenadoCor.length >= 50){
+            this.setState({maximoCaraCorreo:true});
+            res = false;
+        }
+        if(llenadoCor.includes("@")){
+            this.setState({dominioFalCorreo:true});
+            res = false;
+            //investigar sobre el dominio.
+        }
+        if(!this.correoExiste(llenadoCor)){
+            this.setState({correoExistente:true});
+            //validar con la BD
+            res = false;
+        }
+        if(nombreLlenado.includes("..")){
+            this.setState({puntosContinuosCorreo:true});
+            res = false;
+        }
+        if(llenadoCor.length === 5){
+            this.setState({minimoCaraCorreo:true});
+            res = false;
+        }
+        if(llenadoCor.length ===0){
+            this.setState({cadVacioCorreo:true});
+            res = false;
+        }
+        if(llenadoCor.includes("  ")){
+            this.setState({cadVaciasCorreo:true});
+            res = false;
+        }
+        return res;
+    }
+
+    validarApellido(){
+        var res = true;
+        
+        var nombreLlenado = this.state.campoApellido;
+        if(nombreLlenado.length === 0){
+            this.setState({errorVacioApellido:true});  
+            var res = false;
+        }
+        if(/[^A-Za-z-ZñÑáéíóúÁÉÍÓÚ0-9\s/d]/.test(nombreLlenado)){
+            //no estamos validando el "/"
+            this.setState({errorCaraEspeciApellido : true});
+            var res = false;
+        }
+        if(nombreLlenado.length > 25){
+            this.setState({maximoCaraApellido : true});
+            var res = false;
+        }
+        if(nombreLlenado.length < 2){
+            this.setState({minimoCaraApellido : true});
+            var res = false;
+        }
+        if(nombreLlenado.includes("  ")){
+            this.setState({cadVaciasApellido : true});
+            var res = false;   
+        }
+        return res;
+    }
+
+    validarNombre(){
+        var res = true;
+        
+        var nombreLlenado = this.state.campoNombre;
+        if(nombreLlenado.length === 0){
+            this.setState({errorVacioNombre:true});  
+            var res = false;
+        }
+        if(  /[^A-Za-z-ZñÑáéíóúÁÉÍÓÚ0-9\s/d]/.test(nombreLlenado)){
+            //no estamos validando el "/"
+            this.setState({errorCaraEspeciNombre : true});
+            var res = false;
+        }
+        if(nombreLlenado.length > 25){
+            this.setState({maximoCaraNombre : true});
+            var res = false;
+        }
+        if(nombreLlenado.length < 2){
+            this.setState({minimoCaraNombre : true});
+            var res = false;
+        }
+        if(nombreLlenado.includes("  ")){
+            this.setState({cadVaciasNombre : true});
+            var res = false;   
+        }
+        return res;
+
+    }
+
+    
     render(){
         return(
             <html lang="en">
@@ -77,7 +276,7 @@ class Registro extends Component{
                 <title>Document</title>
             </head>
             <body>
-                <div id='form'  className="w3-container w3-card-4 w3-light-grey">
+                <div id='form'  className="w3-container w3-card-4 w3-light-grey" onSubmit={this.validarRegistro}> 
                 <h1 id='TituloPrin' className="w3-center">Registrate en Wdemy</h1>
                 <div className="w3-row w3-section">
                     
@@ -87,10 +286,10 @@ class Registro extends Component{
                         <div className="contenierNomApe ">                            
                             <div className='alertsIzq'>
                                 <input id='campNombre' className="w3-input w3-border" name="first" type="text" placeholder="Nombre(s)"
-                                    campoNombre={this.state.campoNombre} onChange={this.nameChange}
+                                    value={this.state.campoNombre} onChange={this.nameChange}
                                 />
                                 {this.state.errorVacioNombre?       <p>El campo nombre(s) no debe  estar vacio</p>                  : null }
-                                {this.state.errorVacioNombre?       <p>No debe  contener caracteres especiales</p>                  : null }
+                                {this.state.errorCaraEspeciNombre?  <p>No debe  contener caracteres especiales</p>                  : null }
                                 {this.state.maximoCaraNombre?       <p>El nombre debe tener máximo 25 caracteres</p>                : null }
                                 {this.state.minimoCaraNombre?       <p>El nombre debe tener mínimamente 2 caracteres</p>            : null }
                                 {this.state.cadVaciasNombre?        <p>El nombre no debe contener cadenas de caracteres vacias</p>  : null }
@@ -99,7 +298,7 @@ class Registro extends Component{
                           
                             <div className='alertsDere'>
                                 <input id='campApelli' class="w3-input w3-border" name="last" type="text" placeholder="Apellidos" 
-                            
+                                    value={this.state.campoApellido} onChange={this.firstNameChange}
                                 />
                                 {this.state.cadVaciasApellido?        <p>El campo apellidos no debe estar vacio</p>                       : null }
                                 {this.state.errorCaraEspeciApellido?  <p>No debe  contener caracteres especiales</p>                      : null }
@@ -114,7 +313,9 @@ class Registro extends Component{
                     <div id='campCorr' class="w3-row w3-section">
                         <i id='logoCorreo' class="w3-xxlarge fa fa-envelope-o"></i>
                         <div class="w3-rest">
-                            <input id='campoCorreo'  class="w3-input w3-border" name="email" type="text" placeholder="correo" />
+                            <input id='campoCorreo'  class="w3-input w3-border" name="email" type="text" placeholder="correo" 
+                                value={this.state.campoCorreo} onChange={this.correoChange}
+                            />
                         </div>
 
                         <div className='alersCorreo'>
@@ -133,7 +334,8 @@ class Registro extends Component{
                         <i id='logoContras' class="w3-xxlarge fa fa-envelope-o"></i>  
                         <div className="contenierNomApe" > 
                             <div className='alertsIzq'>                            
-                                <input id='campNombre'  class="w3-input w3-border" name="password" type="password" placeholder="contraseña"                             
+                                <input id='campNombre'  class="w3-input w3-border" name="password" type="password" placeholder="contraseña" 
+                                    value={this.state.campoContraseña} onChange={this.passwordChange}                            
                                 />
                                 {this.state.minimoCaraContrase?       <p>Debe tener por lo menos 8 caracteres</p>                 : null }
                                 {this.state.cadVacioContrase?         <p>El campo contraseña no debe estar vacio</p>              : null }
@@ -143,6 +345,7 @@ class Registro extends Component{
                             </div>
                             <div className='alertsDere'>
                                 <input id='campApelli'  class="w3-input w3-border" name="password" type="password" placeholder="confirmar contraseña"
+                                    value={this.state.campoConfirContraseña} onChange={this.passwordConfirChang}                            
                                 />                            
                                 {this.state.confirmarContrase?            <p>Las contraseñas deben de ser idénticas</p>               : null }
                             </div> 
@@ -153,7 +356,7 @@ class Registro extends Component{
                 </div>
                 <div>
 
-                    <button className="w3-btn " id='botonRegis' onClick={this.validarNombre}>
+                    <button className="w3-btn " id='botonRegis' onClick={this.validarRegistro}>
                          Registrarse
                     </button>
                     
