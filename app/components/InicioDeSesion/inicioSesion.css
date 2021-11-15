@@ -6,10 +6,19 @@
 
 #prinPar{
     width: 200px;
+    
     position: relative;
-    left: 35%;
+    /* margin-left: 0%; */
+    left: 0%;
     
 }
+/* 
+#caja2{
+    width: 200 px;
+    position: absolute;
+    top:50%;
+    left: 35%;
+} */
 
 #btnIni{ /*no me funciona el color nose por que*/
     width: 130px;
@@ -50,11 +59,11 @@
     font-size: 15px;
 }
 #iconCor{
-    margin-top: 2%;
-    margin-left: 3%;
-    position: absolute;
-    width: 30%;
-    height: 10px;
     float: left;
-    padding: 15px;  
+     /* position: absolute; */
+    top: 40px;
+    left: 300px; 
+    width: 45px;
+    height: 45px;
+    font-size: 48px;
 }
