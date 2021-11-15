@@ -2,24 +2,66 @@ import React, {Component} from "react";
 import { withRouter } from "react-router-dom";
 import './inicioSesion.css'
 class InicioDeSesion extends Component{
-    /**constructor(props){
+     constructor(props){
         super(props);
         this.state={
-            campoCorreo   :"",
-            campoContra :"",
+            campoCorreo     :"",
+            campoContra     :"",
+            vacioContra     :false,
+            vacioCorr       :false,
             errorContraseña :false,
-            errorCorreo :false
+            errorCorreo     :false
         }
-        this.mailChange          = this.mailChange.bind(this);
-        this.contraChange          = this.contraChange.bind(this);
-    }
-    mailChanche(event){
+        this.validarInicio =this.validarInicio.bind(this);
+         this.mailChange          = this.mailChange.bind(this);
+        this.contraChange          = this.contraChange.bind(this); 
+        this.validarAllCampos      = this.validarAllCampos.bind(this);
+        this.validarCorreo         = this.validarCorreo.bind(this);
+        this.validarContra         = this.validarContra.bind(this);
+        this.devolverValoresState  = this.devolverValoresState.bind(this);
+    } 
+    
+    mailChange(event){
         this.setState({campoCorreo: event.target.value});
     }
     contraChange(event){
         this.setState({campoContra: event.target.value});
     }
+    devolverValoresState(){
+        this.setState({
+            vacioContra     :false,
+            vacioCorr       :false,
+            errorContraseña :false,
+            errorCorreo     :false
+        });
+    }
+    validarAllCampos(){
+        var res = false;
+         this.devolverValoresState();
+        this.validarCorreo();
+        this.validarContra(); 
+        return res;
+    }
 
+    validarCorreo(){
+        var res = true;
+        var estadoCor = this.state.campoCorreo;
+        if(estadoCor==""){
+            this.setState({vacioCorr:true});
+            res =false;
+        }else{}
+        return res;
+    }
+    validarContra(){
+        var res = true;
+        var estadoCont = this.state.campoContra;
+        if(estadoCont==""){
+            this.setState({vacioContra:true});
+            res =false;
+        }else{}
+        return res;
+    }
+    /**
     validarIniciSecion(event){
         var todoBienTodoCorrecto = this.validarAllCampos();
         //se hace la consulta en aqui
@@ -30,31 +72,17 @@ class InicioDeSesion extends Component{
             
         }
 
-    }
-    validarAllCampos(){
-        var res = false;
-         this.devolverValoresState();
-        this.validarCorreo();
-        this.validarContra(); 
-    }
-
-    validarCorreo(){
-        var res = true;
-        var estadoCor = this.state.campoCorreo;
-        if(estadoCor==""){
-            res =false;
-        }else{}
-        return res;
-    }
-    validarContra(){
-        var res = true;
-        var estadoCont = this.state.campoContra;
-        if(estadoCont==""){
-            res =false;
-        }else{}
-        return res;
     } */
-
+   
+    validarInicio(event){
+        var estaBien=this.validarAllCampos();
+        if(estaBien){
+            /**capturar de la BD */
+        }else{
+            this.setState({vacioContra:true});
+            this.setState({vacioCorr:true});
+        }
+    }
 
     render(){
         return(
@@ -70,28 +98,36 @@ class InicioDeSesion extends Component{
             </head>
             <body>
                  
-                 <form id='form'  action="/action_page.php" className="w3-container w3-card-4 w3-light-grey w3-text-Black w3-margin">
+                 <div id='form'   className="w3-container w3-card-4 w3-light-grey" onSubmit={this.validarInicio}>
                     <div className="w3-row w3-section" className="w3-center">
                         
                         <h1 className="w3-center">Bienvenido a Wdemy</h1>
                         
-                        <div>
-                            <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" 
-                            /* value={this.state.campoCorreo} onChange={this.mailChange} */
-                            />
-                            {/* {this.state.errorCorreo?    <p>correo electronico incorrecto</p>                  : null } */}
+                        <div >
+                            <div className="icon-cor" class="w3-rest">
+                                <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" 
+                                value={this.state.campoCorreo} onChange={this.mailChange}  
+                                />
+                            </div>
+                            
+                            <div className="alertas">
+                                {this.state.errorCorreo?    <p>correo electronico incorrecto</p>    : null} 
+                                {this.state.vacioCorr? <p>correo electronico incorrecto</p>         :null }
+                            </div>
+                                
                         </div>
                         
                         <br />
-                        <div>
+                        <div className="alertas">
                             <input id='prinPar'  class="w3-input w3-border" name="campoContra" type="Password" placeholder="contraseña" 
-                           /*  value={this.state.campoContra} onChange={this.contraChanche} */
+                            value={this.state.campoContra} onChange={this.contraChanche} 
                             />
-                            {/* {this.state.errorContraseña?       <p>la contraseña es incorrecta</p>                  : null } */}
+                             {this.state.errorContraseña?       <p>la contraseña es incorrecta</p>                  : null } 
+                                {this.state.vacioContra? <p>la contraseña es incorrecta</p> :null}
                         </div>
                         
                         <br />
-                        <button  id='btnIni'  class="w3-button " /* onClick={this.validarRegistro} */>Iniciar Sesion</button>
+                        <button  id='btnIni'  class="w3-button "  onClick={this.validarInicio} >Iniciar Sesion</button>
                         <br />
                         
                         <div  className="enlaceComp" >
@@ -100,7 +136,7 @@ class InicioDeSesion extends Component{
                         </div>
                     </div>
                         
-                 </form>
+                 </div>
                  
             </body>
             </html>

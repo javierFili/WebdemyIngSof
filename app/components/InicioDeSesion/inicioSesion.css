@@ -41,9 +41,13 @@
     height: 450px;
     position:absolute;
     top: 50%;
-    left: 50%;
+    left: 30%;      /*esto lo mantiene en el centro*/
     transform: translate(-50%,-50%);
     
+}
+.alertas{
+    color: red;
+    font-size: 15px;
 }
 #iconCor{
     margin-left: 3%;
