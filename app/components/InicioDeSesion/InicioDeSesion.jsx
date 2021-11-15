@@ -94,6 +94,7 @@ class InicioDeSesion extends Component{
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <title>Wdemy</title>
             </head>
             <body>
@@ -104,10 +105,15 @@ class InicioDeSesion extends Component{
                         <h1 className="w3-center">Bienvenido a Wdemy</h1>
                         
                         <div >
-                            <div className="icon-cor" class="w3-rest">
-                                <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" 
-                                value={this.state.campoCorreo} onChange={this.mailChange}  
-                                />
+                            <div  class="w3-rest" >
+                                
+                                <svg className="iconCor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H6c-1.103 0-2 .897-2 2v5h2V8l6.4 4.8a1.001 1.001 0 0 0 1.2 0L20 8v9h-8v2h8c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-7 6.75L6.666 6h12.668L13 10.75z"/><path d="M2 12h7v2H2zm2 3h6v2H4zm3 3h4v2H7z"/></svg>
+                                <div class="w3-rest">
+                                    <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" 
+                                    value={this.state.campoCorreo} onChange={this.mailChange}  
+                                    />
+                                </div>
+                                
                             </div>
                             
                             <div className="alertas">

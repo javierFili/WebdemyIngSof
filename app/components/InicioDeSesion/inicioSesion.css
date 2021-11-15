@@ -50,5 +50,11 @@
     font-size: 15px;
 }
 #iconCor{
+    margin-top: 2%;
     margin-left: 3%;
+    position: absolute;
+    width: 30%;
+    height: 10px;
+    float: left;
+    padding: 15px;  
 }
