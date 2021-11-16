@@ -1,4 +1,3 @@
-/**todo esto se es valido, ojo no sustituir al hacer merges */
 import React, {Component} from "react";
 import { withRouter } from "react-router-dom";
 import './Registro.css'
