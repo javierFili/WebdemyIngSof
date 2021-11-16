@@ -102,7 +102,7 @@ class InicioDeSesion extends Component{
                  <div id='form'   className="w3-container w3-card-4 w3-light-grey" onSubmit={this.validarInicio}>
                     <div className="w3-row w3-section" className="w3-center">
                         
-                        <h1 className="w3-center">Bienvenido a Wdemy</h1>
+                        <h1 className="w3-center" className="titulForm">Bienvenido a Wdemy</h1>
                         
                         <div >
                             <div  class="w3-rest" >
@@ -110,7 +110,7 @@ class InicioDeSesion extends Component{
                             <i id='iconCor' class="w3-email"></i>
                             <i id='iconCor' class="w3-email"></i>
                             <i id='iconCor' class="w3-email"></i>
-                                <svg id='iconCor' xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><path d="M20 4H6c-1.103 0-2 .897-2 2v5h2V8l6.4 4.8a1.001 1.001 0 0 0 1.2 0L20 8v9h-8v2h8c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-7 6.75L6.666 6h12.668L13 10.75z"/><path d="M2 12h7v2H2zm2 3h6v2H4zm3 3h4v2H7z"/></svg>
+                                <i id='iconCor' class="fa fa-envelope"></i>
                                 <div >
                                     <input  id='prinPar'  class="w3-input w3-border" name="email" type="text" placeholder="correo electronico" 
                                     value={this.state.campoCorreo} onChange={this.mailChange}  
