@@ -1,4 +1,3 @@
-/*Cuidado al hacer merge ! XDD*/ 
 import React, {Component} from "react";
 import { withRouter } from "react-router-dom";
 import './Registro.css'
@@ -411,6 +410,5 @@ class Registro extends Component{
         );
     }
 }
-/**estoy probando mi git      */
 
 export default withRouter(Registro);
