@@ -409,6 +409,6 @@ class Registro extends Component{
         );
     }
 }
-/**estoy probando mi git      */
+/**todo esto se es valido, ojo no sustituir al hacer merges */
 
 export default withRouter(Registro);
