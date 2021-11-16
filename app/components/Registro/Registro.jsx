@@ -410,5 +410,5 @@ class Registro extends Component{
         );
     }
 }
-
+/*no creo XD*/
 export default withRouter(Registro);
