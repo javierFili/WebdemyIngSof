@@ -136,7 +136,7 @@ class InicioDeSesion extends Component{
                                 <i id='iconCor' class="fa fa-lock"></i>
                                 
                                 <input id='prinPar'  class="w3-input w3-border" name="campoContra" type="Password" placeholder="contraseña" 
-                                value={this.state.campoContra} onChange={this.contraChanche} 
+                                value={this.state.campoContra} onChange={this.contraChange} 
                                 />
                             </div>
                             
