@@ -36,6 +36,7 @@
     margin-top: 4%;
 }
 
+
 .contenierNomApe{
     margin-top: 5%;
     display: grid;
@@ -106,6 +107,7 @@
 /*El input de nombres y apellidos nas sus alertas*/
 /*a revisar*/
 
+
 #botonRegis{
     width: 200px; 
     height: 50px;
@@ -131,12 +133,21 @@
 }
 
 
-#form{
+#formResgistro{
     margin-left: 20%;
-    Width:761px;       
-    margin-bottom: 6%; 
+    Width:55%;       
+    height: auto;
+    margin-bottom: 10%;
+    /* position:absolute;
+    top: 75%;
+    left: 30%;     
+    transform: translate(-50%,-50%); */
+    
 }
 
-  body{
+body{
     font-family: 'Roboto', sans-serif;
-  }
+}
+#iconCor{
+    margin-left: 5%;
+}

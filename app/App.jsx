@@ -44,7 +44,7 @@ function VistaCurso(){
 function VistaEstudiante(){
   return(
     <Router>
-        <AppBar/>
+        <AppBar  showButtRegis='false' showButtLogin='false'/>
         <VistaEst/>
       </Router>
   );
