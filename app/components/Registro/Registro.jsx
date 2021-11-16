@@ -208,6 +208,7 @@ class Registro extends Component{
             this.setState({dominioFalCorreo:true});
             res = false;
             //investigar sobre el dominio.
+            //falta eso creo
         }
         if(!this.correoExiste(llenadoCor)){
             this.setState({correoExistente:true});
