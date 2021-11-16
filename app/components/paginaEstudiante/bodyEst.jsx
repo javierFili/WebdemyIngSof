@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './bodyEst.css'
+import Popup from '../body-components/carrucel/Popup.jsx';
 
 class VistaEst extends Component{
     constructor(props){
         super(props);
         this.state = {
+            value: "",
             usuario: props.id_usuario,
-            cursos: []
+            cursos: [],
+            showPopup: false,
+            textPopup: ""
         }
         this.fetchCourse = this.fetchCourse.bind(this);
         this.cortar = this.cortar.bind(this);
         this.refrescarPagina = this.refrescarPagina.bind(this);
-    
+        this.listOrd = this.listOrd.bind(this);
+        this.ordAlf = this.ordAlf.bind(this);
+        this.ordFecha = this.ordFecha.bind(this);
+        
+        this.togglePopup = this.togglePopup.bind(this);
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handlePaste = this.handlePaste.bind(this);
+        this.handleChar = this.handleChar.bind(this);
+        this.buscarPalab = this.buscarPalab.bind(this);
+
+
         this.nombreAbuscar = "";
+        this.numFiltrado = 0;
     }
 
     componentDidMount(){
@@ -39,6 +56,7 @@ class VistaEst extends Component{
     
         let hash = {};
         var filtracion = filtracion0.filter(curso=>hash[curso.id_curso]? false : hash[curso.id_curso]=true);
+        this.numFiltrado = filtracion.length;
         return filtracion;
     }
 
@@ -46,33 +64,142 @@ class VistaEst extends Component{
         window.location.href = window.location.href;
     }
 
+    listOrd(){ //muestra lista desplegable
+        console.log("Se muestra lista");
+        var x = document.getElementById("listaOrden");
+        if (x.className.indexOf("w3-show") == -1) { 
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    buscarPalab(){
+        this.forceUpdate();
+        this.nombreAbuscar = this.state.value;
+        console.log(this.nombreAbuscar);
+    }
+
+    ordAlf(){
+        this.fetchCourse();
+    }
+
+    ordFecha(){
+        this.setState({cursos: []}); /* Ejemplo de funcionamiento */
+    }
+
+      handleChange(event) {
+        this.setState({value: event.target.value});  
+        event.preventDefault();
+      }
+    
+      handlePaste(event){
+        event.preventDefault();
+        this.setState({textPopup: "No se permite pegar texto en el campo"})
+        this.togglePopup();
+        console.log("se intento pegar");
+        return false;
+      }
+    
+      togglePopup() {
+        this.setState({
+            showPopup: !this.state.showPopup
+          });
+      }
+    
+      handleChar(e){
+        var tecla = e.charCode;
+        //Tecla de retroceso para borrar, siempre la permite
+        if(this.state.showPopup){
+          e.preventDefault();
+          return false;
+        }
+        if (tecla == 8 || tecla == 13) {
+           return true; 
+        }
+        if (tecla == 32){ //Borra espacios
+          e.preventDefault();
+          return false;
+        }else{
+          var patron = /[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s]/;
+          var tecla_final = String.fromCharCode(tecla);
+          
+          if(patron.test(tecla_final)){
+            return true;
+          }else{
+    
+            if(e.fromCharCode != typeof undefined){
+              e.preventDefault();
+              console.log("No se agrega nada");
+              this.setState({textPopup: "El campo solo puede ser llenado con letras y números"})
+              this.togglePopup();
+              return false;
+            }
+            e.preventDefault();
+            console.log("No se agrega nada");
+            //this.togglePopupChar();
+            this.setState({textPopup: "El campo solo puede ser llenado con letras y números"})
+            this.togglePopup();
+            return false;
+          }  
+        }
+      }
+
     render() {
         return(
             <div className="fondoEst">
                 <div>
-                    <input type="text" placeholder="Buscador de Cursos" className="inputPagEst"/>
-                    <p> Ordenar cursos </p>
+                    <div className="w3-cell-row">
+                        <div className="w3-container w3-cell w3-cell-middle buscador">
+                            <button className="btnIconos w3-button" onClick={this.buscarPalab}>
+                                <i className="fa fa-search w3-xxlarge" ></i>
+                            </button>
+                            
+                            <input type="text" value={this.state.value} onChange={this.handleChange} onPaste={this.handlePaste} onKeyPress={this.handleChar} maxLength={16} placeholder="Buscador de Cursos" className="inputPagEst"/>
+                        </div>
+                        
+                        <div className="w3-container w3-cell w3-cell-middle txtOrden" >
+                            <p id="txtOrdCursos"> Ordenar cursos </p> 
+                        </div>
+
+                        <div className="w3-container w3-cell w3-cell-middle iconoOrd">
+                            <button className="btnIconos w3-button" onClick={this.listOrd}>
+                                <i className="fa fa-bars w3-xxlarge" ></i>
+                            </button>
+                            <div id="listaOrden" className="w3-dropdown-content w3-bar-block w3-border">
+                                <button onClick={this.ordAlf} className="w3-bar-item w3-border opcionDropd">Alfabeticamente</button>
+                                <button onClick={this.ordFecha} className="w3-bar-item w3-border opcionDropd">Por fecha creac.</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-                <p> Mis cursos: </p>
+                <p id="textMisCursos"> Mis cursos: </p>
                 <div className="contCursosEst">
                     {
                         this.sacar().map(curso => {
                             return(
                             <div>
-                                <button className="elementos-carrusel" onClick={this.refrescarPagina}>
+                                <button className="elementosLista" onClick={this.refrescarPagina}>
                                     <Link className='linkInial' to={`/Inicio/${curso.id_curso}`} > 
                                         <div key={curso.id_curso} className="linkCursoEst">
-                                            <div>
-                                                <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
-                                            </div>
-                                            <div>
-                                                <h3>{curso.nombreCurso}</h3>                  
-                                                <div className="curseDescription">
-                                                    Actualizacion: {this.cortar(curso.created_at) }
-                                                    <br />
-                                                    Inscritos: { curso.inscritos }
-                                                    <br />
-                                                    Tutor: {curso.nomT} {curso.apellT}
+                                            <div className="w3-cell-row">
+                                                <div className="w3-container w3-cell w3-cell-middle imagenCur">
+                                                    <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
+                                                </div>
+                                                <div className="w3-container w3-cell w3-cell-middle infoCur">
+                                                    <p className="tituloCurs">{curso.nombreCurso}</p>                  
+                                                    <div>
+                                                        <div className="w3-cell-row">
+                                                            <div className="w3-cell">
+                                                                Actualizacion: {this.cortar(curso.created_at) }
+                                                            </div>
+                                                            <div className="w3-cell">
+                                                                Tutor: {curso.nomT} {curso.apellT}
+                                                            </div>
+                                                        </div>
+                                                        <p> Objetivo curso </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -83,8 +210,22 @@ class VistaEst extends Component{
                             })
                     }
                 </div>
+                {this.numFiltrado === 0 ? 
+                    <div id="contNoEncont">
+                        <h1> No existen coincidencias de cursos </h1>
+                        <img id='imagenError' src={`${process.env.PUBLIC_URL}/assets/imagenes/error.png`}></img>  
+                    </div> : null
+                }
+                {this.state.showPopup ? 
+                    <Popup
+                    text= {this.state.textPopup}
+                    closePopup={this.togglePopup.bind(this)}
+                    />
+                    : null
+                }
             </div>
+            
         )
     }
 }
-export default VistaEst
+export default VistaEst;
