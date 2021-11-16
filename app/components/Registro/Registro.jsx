@@ -36,6 +36,7 @@ class Registro extends Component{
             cadContraseIdenticas    : false,
             almenosDosNumContrase   : false,
             confirmarContrase       : false,
+            veriCorreo              :false,
         
         }
     
@@ -54,6 +55,7 @@ class Registro extends Component{
         this.validarCorreo        = this.validarCorreo.bind(this);
         this.validarConfirContrase= this.validarConfirContrase.bind(this);
         this.validarContrase      = this.validarContrase.bind(this); 
+        this.esCorreo             = this.esCorreo.bind(this);
       
 
     }
@@ -202,7 +204,7 @@ class Registro extends Component{
             this.setState({cadVacioCorreo:true});
             res = false;
         }
-        if(!llenadoCor.includes("@")){
+        if(!this.esCorreo(llenadoCor)){
             this.setState({dominioFalCorreo:true});
             res = false;
             //investigar sobre el dominio.
@@ -223,11 +225,27 @@ class Registro extends Component{
         return res;
     }
 
+    esCorreo(cadVericacion){
+        var res = false;
+        var numArro = 0;
+        for(var i = 0 ; i< cadVericacion.length;i++){
+            if(cadVericacion[i] == '@'){
+                console.log("verificaCorreo")
+                numArro++;
+            }
+        }
+        if(numArro === 1){
+            res = true;
+        }else{
+            this.setState({veriCorreo:true});
+        }
+        return res;           
+    }
+
     validarApellido(){
         var res = true;        
         var nombreLlenado = this.state.campoApellido;
         if(nombreLlenado.length == 0){
-            console.log("eaqui noasm");
             this.setState({errorVacioApellido:true});  
             var res = false;
         }
@@ -340,14 +358,15 @@ class Registro extends Component{
                             {this.state.puntosContinuosCorreo?<p>El correo que ingresó tiene más de dos puntos continuos</p>  : null }
                             {this.state.minimoCaraCorreo?     <p>El correo que ingrese debe contener más de 5 caracteres</p>  : null }                            
                             {this.state.cadVacioCorreo?       <p>El campo correo no debe estar vacio</p>                      : null }
-                            {this.state.cadVaciasCorreo?      <p>El correo no debe contener cadenas de caracteres vacias</p>  : null }                            
+                            {this.state.cadVaciasCorreo?      <p>El correo no debe contener cadenas de caracteres vacias</p>  : null }   
+                            {this.state.veriCorreo?            <p>Verifique su correo                                    </p> : null }                         
                         </div>
 
                     </div>
 
                     <div id='campContrasenias' >
                         <i id='logoContras' class="w3-xxlarge fa fa-envelope-o"></i>  
-                        <div className="contenierNomApe" > 
+                            <div className="contenierNomApe" > 
                             <div className='alertsIzq'>                            
                                 <input id='campNombre'  class="w3-input w3-border" name="password" type="password" placeholder="contraseña" 
                                     value={this.state.campoContraseña} onChange={this.passwordChange}                            
