@@ -409,6 +409,6 @@ class Registro extends Component{
         );
     }
 }
-/**estoy probando mi git  */
+/**estoy probando mi git    */
 
 export default withRouter(Registro);
