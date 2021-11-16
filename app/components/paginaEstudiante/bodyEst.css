@@ -4,6 +4,7 @@
     background-size: 100% 100%;
     height: 100%;
     width: 101.2%;
+    min-height: 600px;
     margin: -0.6%;
     margin-top: -25px;
     padding-left: 2.5em;
@@ -48,6 +49,7 @@
     background-color: #DFEEEA;
     height: 5em;
     width: 5em;
+    cursor: pointer;
   }
 
   .iconoBtn{
@@ -110,4 +112,32 @@
   #txtOrdCursos{
     font-size: 24px;
     color: #5E8B7E;
+  }
+  
+  .dropdownOrd{
+    align-content: middle; /*no afecta en nada*/
+  }
+
+  #listaOrden{
+    margin-left: -2em;
+  }
+
+  .opcionDropd{
+    text-align: center;
+    background-color: #13383C;
+    color: white;
+    cursor: pointer;
+  }
+
+  #contNoEncont{
+    align-items: center;
+    align-content: center;
+    margin:auto;
+    text-align:center;
+    vertical-align: middle;
+  }
+
+  #imagenError{
+    height: 15em;
+    height: 15em;
   }
