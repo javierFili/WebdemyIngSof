@@ -87,22 +87,31 @@ router.get('/:id/etiquetas', async (req, res) => {
 
 router.post('/registrar', async (req,res)=> {
     const { nombre,apellido,fecha_nacimiento,correo, pass} = req.body;
-    
+
     let salt = bcrypt.genSaltSync();
     let hash = bcrypt.hashSync(pass,salt);
-/*/*
-    res.json({
-        usuario, 
-        hash,
-    })
-*/
-    const cursos = await pool.query(`INSERT INTO usuario (nombres, apellidos, fecha_nacimiento, correo, contrasena, fotografia) VALUES ('${nombre}', '${apellido}', '${fecha_nacimiento}', '${correo}', '${hash}', 'ss')`,(err,rows,fields) => {
-        if(!err){
-            res.json(rows);
-        }else{
-            console.log(err);
-        }
-    });
+    var cumple= true;
+
+    if(pass.length<=5)
+    {
+        res.json("muy corto");
+        cumple=false;
+    }
+    if(nombre==pass)
+    {
+        res.json("el nombre y la clave no pueden ser iguales");
+        cumple=false;
+    }
+    if(cumple)
+    {
+        const cursos = await pool.query(`INSERT INTO usuario (nombres, apellidos, fecha_nacimiento, correo, contrasena, fotografia) VALUES ('${nombre}', '${apellido}', '${fecha_nacimiento}', '${correo}', '${hash}', 'ss')`,(err,rows,fields) => {
+            if(!err){
+                res.json(rows);
+            }else{
+                console.log(err);
+            }
+        });
+    }
 })
 
 module.exports = router;
