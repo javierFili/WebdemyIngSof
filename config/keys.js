@@ -2,9 +2,9 @@ module.exports = {
 
     database: {
         host: 'localhost',
-        user: 'root',
-        password: 'tarija12345Javi',
-        database: 'practicadb'
+        user: '55WrEHtcnw',
+        password: 'IgXYsdHAyA',
+        database: '55WrEHtcnw'
     }
 
 }; 
