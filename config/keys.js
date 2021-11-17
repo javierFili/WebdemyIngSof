@@ -1,9 +1,9 @@
 module.exports = {
 
     database: {
-        host: 'localhost',
+        host: '%.%.%.%',
         user: 'root',
-        password: 'tarija12345Javi',
+        password: '',
         database: 'practicadb'
     }
 
