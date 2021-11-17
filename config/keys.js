@@ -1,10 +1,10 @@
 module.exports = {
 
     database: {
-        host: 'localhost',
-        user: 'root',
-        password: 'tarija12345Javi',
-        database: 'practicadb'
+        host: 'https://remotemysql.com/phpmyadmin/index.php',
+        user: '55WrEHtcnw',
+        password: 'IgXYsdHAyA',
+        database: '55WrEHtcnw'
     }
 
 }; 
