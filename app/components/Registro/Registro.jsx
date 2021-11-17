@@ -114,6 +114,7 @@ class Registro extends Component{
         var todoBienTodoCorrecto = this.validarAllCampos();
         if(todoBienTodoCorrecto){
             // se sube ala base de datos .
+            //se debe de aver con los encargados de backend.
         }else{
             // no se hace nada.
         }
@@ -412,4 +413,6 @@ class Registro extends Component{
 }
 
 
+
 export default withRouter(Registro);
+
