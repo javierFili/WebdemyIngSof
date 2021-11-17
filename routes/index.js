@@ -83,4 +83,18 @@ router.get('/:id/etiquetas', async (req, res) => {
     res.send(cursos); //muestra la consulta en la pagina
 });
 
+router.post('/register', async(req, res) => {
+    const {nombre, apellidos, correo, pass} = req.body;
+    let salt = bcrypt.genSaltSync();
+    let hash = bcrypt.hashSync(pass, salt);
+
+    const curso = await pool.query(`insert int usuario (nombres, apellidos, correo, contrasena) values ('${nombre}', '${apellidos}', '${correo}', '${hash}')`,(err, rows, fields) => {
+        if(!err){
+            res.json(rows);
+        }else{
+            console.log(err);
+        }
+    });
+});
+
 module.exports = router;
