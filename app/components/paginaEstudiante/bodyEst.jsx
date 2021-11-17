@@ -162,7 +162,7 @@ class VistaEst extends Component{
                             <p id="txtOrdCursos"> Ordenar cursos </p> 
                         </div>
 
-                        <div className="w3-container w3-cell w3-cell-middle iconoOrd">
+                        <div className="w3-container w3-cell w3-cell-middle">
                             <button className="btnIconos w3-button" onClick={this.listOrd}>
                                 <i className="fa fa-bars w3-xxlarge" ></i>
                             </button>
