@@ -54,6 +54,28 @@ body{
   margin-bottom: 25px;
 }
 
+/* estan correctamente acomadados.*/
+.appBarDere{
+  margin-left: 80%;
+  display:flex;
+}
+
+#ButtonRegister{
+  margin-top: 15%;
+  margin-left:  5%;
+  border-radius: 10px;
+  background-color: #192d30;
+  color: #FFFFFF;
+}
+
+#ButtonLogin{
+  margin-top: 15%;
+  margin-left:  5%;
+  border-radius: 10px;
+  background-color: #192d30;
+  color: #FFFFFF;
+}
+
 /*La parte del body, fondo
   carrusel,descripcion, filtro.
 */
