@@ -22,6 +22,7 @@ body{
   border-color: #2F5D62;
   height: 0px;
   border:none;
+  
 
   position: absolute;
   color: white;
@@ -31,6 +32,7 @@ body{
   font-size: 25px;
   padding: 10px;
 }
+
 
 .linkInial{
   color: inherit;
@@ -57,6 +59,10 @@ body{
 /* estan correctamente acomadados.*/
 .appBarDere{
   margin-left: 80%;
+  display:flex;
+}
+
+.appBarIzq{
   display:flex;
 }
 
@@ -104,19 +110,24 @@ body{
   opacity: 0.0;   /*esto es*/
 }
 
+.BodyPart{
+  padding-left: 10em;
+  padding-right: 10em;  
+}
+
 .descripcion{  /*descripcion general*/
   width: 60%;
   height: 120px;
   background-color: #DFEEEA;
   border-radius: 20px;
-  margin-left: 14%;
   text-align: center;
-  opacity: 0.8  ;
+  opacity: 0.8 ;
+  font-size: 24px;
+  margin-left: auto;
+  margin-right: auto;
   font-family: Arial, Helvetica, sans-serif;
 }
-.letraDescrip{
-  top: 20px;
-}
+
 #tituloCursPlat{
   color: #000000;
   font-size: 26px;
@@ -315,11 +326,9 @@ body{
   font-size: 45px;
   -webkit-text-stroke: 1px black;
   font-family: Arial;
-  margin-top: 10px;
-  margin-bottom: 10px;
   color: white;
   position: absolute;
-  top:45%;
+  top:65%;
 }
 
 .tituloCursos{
@@ -364,7 +373,7 @@ body{
   padding: 5px;
   border-radius: 10px;
   position: absolute;
-  top:47%;
+  top:67%;
 }
 
 .etiqueta{

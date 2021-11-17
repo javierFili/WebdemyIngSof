@@ -6,9 +6,12 @@
     width: 101.2%;
     min-height: 600px;
     margin: -0.6%;
-    margin-top: -25px;
     padding-left: 2.5em;
     padding-right: 2.5em;
+    margin-top: -3%;
+    margin-left: -1%;
+    margin-right: -1%;
+    margin-bottom: -1%;
   }
 
   .inputPagEst{

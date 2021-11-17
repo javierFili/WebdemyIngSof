@@ -40,12 +40,19 @@ class AppBar extends Component {
 
     
     render(){ 
-        const Menu = props => (    
-            <button className="Bt-Wdemy" >
-                <Link className='linkInial' to='/' onClick={this.refrescar}>
-                    <h2 className='titulo' >Wdemy</h2>
-                </Link>
-            </button>
+        const Menu = props => (   
+            <div className="contenedorMenu"> 
+                <button className="Bt-Wdemy" >
+                    <Link className='linkInial' to='/' onClick={this.refrescar}>
+                        <h2 className='titulo' >Wdemy</h2>
+                    </Link>
+                </button>
+                <button className="Bt-Wdemy" >
+                    <Link className='linkInial' to='/' onClick={this.refrescar}>
+                        <h2 className='titulo' >Otros Cursos</h2>
+                    </Link>
+                </button>
+            </div>
             
         )
         return (
