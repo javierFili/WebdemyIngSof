@@ -266,7 +266,7 @@ class Filtro extends Component {
                     <Link className='linkInial' to={`/Inicio/${curso.id_curso}`} > 
                         <div key={curso.id_curso} className="linkCurso">
                             <h3>{curso.nombreCurso}</h3>                  
-                            <img id="imagenCursoRed" src={`${process.env.PUBLIC_URL}/assets/imagenes/${curso.imagen}`}></img>
+                            <img id="imagenCursoRed" src={`/assets/imagenes/${curso.imagen}`}></img>
                             <div className="curseDescription">
                               Actualizacion: {this.cortar(curso.created_at) }
                               <br />
